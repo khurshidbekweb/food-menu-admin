@@ -1,8 +1,9 @@
+import Auth from "./page/auth";
 
 const App = () => {
   return (
     <div>
-      Lorem ipsum dolor sit amet.
+      <Auth/>
     </div>
   );
 };
