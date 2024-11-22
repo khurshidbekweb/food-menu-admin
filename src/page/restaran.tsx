@@ -1,12 +1,13 @@
 import Navbar from "@/components/navbar/navbar";
 
-const Home = () => {
+const Restaran = () => {
     return (
         <div>
             <Navbar/>
-            home
+
+            Restaran
         </div>
     );
 };
 
-export default Home;
+export default Restaran;

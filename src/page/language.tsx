@@ -1,12 +1,12 @@
 import Navbar from "@/components/navbar/navbar";
 
-const Home = () => {
+const Language = () => {
     return (
         <div>
             <Navbar/>
-            home
+            Language
         </div>
     );
 };
 
-export default Home;
+export default Language;

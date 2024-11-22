@@ -1,13 +1,16 @@
 import { useState } from "react";
-import { Mail, Lock } from 'lucide-react';
+import { Lock, User } from 'lucide-react';
+import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
-    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate()
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Login:', { email, password });
+        navigate('/dashboard')
+        console.log('Login:', { name, password });
     };
     return (
         <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
@@ -24,15 +27,15 @@ const Auth = () => {
                     <div className="space-y-4">
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <Mail className="h-5 w-5 text-gray-400" />
+                                <User className="h-5 w-5 text-gray-400" />
                             </div>
                             <input
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                                 required
                                 className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
-                                placeholder="Email address"
+                                placeholder="Jasurbek"
                             />
                         </div>
 
@@ -46,7 +49,7 @@ const Auth = () => {
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
                                 className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
-                                placeholder="Password"
+                                placeholder="*******"
                             />
                         </div>
                     </div>
