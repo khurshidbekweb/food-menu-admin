@@ -5,3 +5,17 @@ export interface navLinkType{
     path: string,
     element: string
 } 
+
+export interface User{
+    _id: string; 
+    username: string; 
+    password: string; 
+    role: "SUPER_ADMIN" | "ADMIN" | "USER"; 
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+}
+export interface Restaurant {
+    restaurant: string | null; 
+    user: User; 
+}

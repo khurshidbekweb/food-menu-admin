@@ -13,9 +13,7 @@ import { Link, useLocation } from "react-router-dom";
 import { navLinkType } from "@/types";
 
 const MobileMenu = () => {
-    const location = useLocation()
-    console.log(location.pathname);
-    
+    const location = useLocation()    
     return (
         <Sheet>
             <SheetTrigger><Menu /></SheetTrigger>

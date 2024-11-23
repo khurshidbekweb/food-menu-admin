@@ -6,12 +6,12 @@ import { userUtils } from "@/utils/user.util";
 import { categoryImgUtils } from "@/utils/categoryImg.utils";
 import { restaurantUtils } from "@/utils/restaurant";
 
-const uselanguageAll = () => {
-    return useQuery({
+const uselanguageAll = () => (
+    useQuery({
         queryKey: [QUERY_KEYS.language_all],
         queryFn: () => languageUtils.getLanguage(),
-    });
-};
+    })
+);
 const useLanguageId = (id: string) => (
     useQuery({
         queryKey: [QUERY_KEYS.language_one],
@@ -21,19 +21,19 @@ const useLanguageId = (id: string) => (
 const useUserAll = () => (
     useQuery({
         queryKey: [QUERY_KEYS.user],
-        queryFn: () => userUtils.getUser
+        queryFn: () => userUtils.getUser()
     })
 );
 const useCategoryImg = () => (
     useQuery({
         queryKey: [QUERY_KEYS.categoryImg],
-        queryFn: () => categoryImgUtils.getcategoryImg
+        queryFn: () => categoryImgUtils.getcategoryImg()
     })
 );
 const useRestuarant = () => (
     useQuery({
         queryKey: [QUERY_KEYS.restuarant_all],
-        queryFn: () => restaurantUtils.getRestaurant
+        queryFn: () => restaurantUtils.getRestaurant()
     })
 );
 const useRestuarantOne = (id:string) => (
