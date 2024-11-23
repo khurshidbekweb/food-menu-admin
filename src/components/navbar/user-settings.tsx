@@ -8,16 +8,17 @@ import { DropdownMenu,
     DropdownMenuTrigger, } from '../ui/dropdown-menu';
 
 const UserSettings = () => {
+  const logOut = () => {
+    localStorage.clear()
+    window.location.reload()
+  }
     return (
         <DropdownMenu>
         <DropdownMenuTrigger><User/></DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-          <DropdownMenuItem>Team</DropdownMenuItem>
-          <DropdownMenuItem>Subscription</DropdownMenuItem>
+          <DropdownMenuItem onClick={logOut} className='bg-red-400 text-white cursor-pointer hover:bg-red-400'>Log out</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
       

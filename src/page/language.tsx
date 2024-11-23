@@ -1,11 +1,70 @@
 import Navbar from "@/components/navbar/navbar";
+import AddLanguage from "@/modal/add-language";
+import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow
+} from "@/components/ui/table";
+import { uselanguageAll } from "@/querys";
+import { lanuage } from "@/types";
+import DeleteModal from "@/modal/delete-modal";
+import { BASE_URL_SERVER } from "@/constants";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { languageUtils } from "@/utils/language.utils";
+import toast from "react-hot-toast";
+import { QUERY_KEYS } from "@/querys/query-key";
 
 const Language = () => {
+    const languages = uselanguageAll()?.data
+    const queryClient = useQueryClient()
+    console.log(languages);
+    
+    const deleteLanguage = useMutation({
+        mutationFn: languageUtils.deletLanguage,
+        onSuccess: () => {
+            toast.success('Muvaffaqiyatli o`chirildi')
+            queryClient.invalidateQueries({queryKey: [QUERY_KEYS.language_all]})
+         },
+         onError: (err) => {
+            console.log(err);
+            toast.error('Xatolik mavjud')
+         }
+    })
     return (
-        <div>
+        <>
             <Navbar/>
-            Language
-        </div>
+            <div className="p-2 md:px-5">
+                <div className="flex justify-between items-center ">
+                    <h2 className="text-2xl font-semibold">Language</h2>
+                    <AddLanguage />
+                </div>
+                <Table>
+                    <TableCaption>All language table</TableCaption>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead className="w-[100px]">Name</TableHead>
+                            <TableHead>Code</TableHead>
+                            <TableHead>Image</TableHead>
+                            <TableHead className="text-right"></TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {languages?.length && languages?.map((res: lanuage) => (
+                            <TableRow key={res._id}>
+                                <TableCell className="font-medium">{res.name}</TableCell>
+                                <TableCell>{res.code}</TableCell>
+                                <TableCell><img src={`${BASE_URL_SERVER}${res.image}`} alt="" /></TableCell>
+                                <TableCell className=""><DeleteModal fn={deleteLanguage.mutate} id={res._id}/></TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </div>
+        </>
     );
 };
 

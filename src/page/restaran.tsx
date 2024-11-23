@@ -32,7 +32,6 @@ const Restaran = () => {
             toast.error('Xatolik mavjud')
          }
     })
-    console.log(restaurant);
     
     return (
         <>
