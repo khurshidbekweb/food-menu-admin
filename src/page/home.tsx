@@ -2,10 +2,12 @@ import Navbar from "@/components/navbar/navbar";
 
 const Home = () => {
     return (
-        <div>
-            <Navbar/>
-            home
+        <>        
+        <Navbar/>
+        <div className="home-page ">
+            
         </div>
+        </>
     );
 };
 
