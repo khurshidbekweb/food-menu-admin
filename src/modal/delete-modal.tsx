@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
     Dialog,
     DialogClose,
@@ -18,7 +17,7 @@ interface deleteModal {
 const DeleteModal: React.FC<deleteModal> = ({ fn, id }: deleteModal) => {
     return (
         <Dialog>
-            <DialogTrigger><Button variant={"link"} className=" text-red-800 block ml-auto"><CgTrash /></Button></DialogTrigger>
+            <DialogTrigger><button className=" text-red-800 block ml-auto"><CgTrash /></button></DialogTrigger>
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle className="text-center my-3">Rostdan ham o'chirmoqchimisiz?</DialogTitle>

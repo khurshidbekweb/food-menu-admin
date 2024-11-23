@@ -15,10 +15,6 @@ export interface User{
     updatedAt: string;
     __v: number;
 }
-export interface Restaurant {
-    restaurant: string | null; 
-    user: User; 
-}
 export interface lanuage{
     _id: string;
     code: string;
@@ -27,4 +23,28 @@ export interface lanuage{
     image: string;
     name: string;
     __v: number;
-}
+}  
+ export interface Language {
+    _id: string;
+    name: string;
+    code: string;
+    image: string;
+    __v: number;
+    createdAt: string;
+    updatedAt: string;
+  }
+  
+ export interface Restaurant {
+    restaurant: null;
+    _id: string;
+    name: string;
+    description: string;
+    image: string;
+    user: User;
+    languages: Language[];
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+    // categories: any[];
+  }
+  
