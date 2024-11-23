@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import Auth from "./page/auth";
 import Root from "./layouts/Root";
 import Home from "./page/home";
@@ -55,6 +55,9 @@ const router = createBrowserRouter([
 
 const App = () => {
   const queryClient = new QueryClient()
+  if(!localStorage.getItem('language')){
+      localStorage.setItem('language', 'uz')
+  }
   return (
     <div>
       <QueryClientProvider client={queryClient}>

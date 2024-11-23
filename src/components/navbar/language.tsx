@@ -5,8 +5,12 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+import { uselanguageAll } from "@/querys";
 
 const Language = () => {
+    const language = uselanguageAll()?.data
+    console.log(language);
+    
     return (
         <DropdownMenu>
             <DropdownMenuTrigger><Languages /></DropdownMenuTrigger>
