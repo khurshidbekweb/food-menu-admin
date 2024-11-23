@@ -8,7 +8,7 @@ const customAxios = axios.create({
 
 customAxios.defaults.headers.common[
     "Authorization"
-  ] = `Bearer ${localStorage.getItem("accessToken")}`;
+  ] = `Bearer ${localStorage.getItem("token")}`;
 
 
 customAxios.interceptors.response.use(
