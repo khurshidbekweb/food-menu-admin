@@ -19,3 +19,12 @@ export interface Restaurant {
     restaurant: string | null; 
     user: User; 
 }
+export interface lanuage{
+    _id: string;
+    code: string;
+    createdAt: string;
+    updatedAt: string;
+    image: string;
+    name: string;
+    __v: number;
+}

@@ -21,6 +21,7 @@ const User = () => {
     const users: Restaurant[] = useUserAll()?.data
     console.log(users);
     const queryClinet = useQueryClient()
+    
     const deleteUser = useMutation({
      mutationFn: userUtils.deleteUser,
      onSuccess: () => {
@@ -52,7 +53,7 @@ const User = () => {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {users.map((user) => (
+                        {users?.length && users?.map((user) => (
                             <TableRow key={user.user._id}>
                                 <TableCell className="font-medium">{user.user.username}</TableCell>
                                 <TableCell>{user.user.password}</TableCell>
