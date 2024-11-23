@@ -7,6 +7,7 @@ import Restaran from "./page/restaran";
 import Food from "./page/food";
 import User from "./page/user";
 import Category from "./page/category";
+import {QueryClientProvider, QueryClient} from '@tanstack/react-query'
 
 
 const router = createBrowserRouter([
@@ -48,9 +49,12 @@ const router = createBrowserRouter([
 
 
 const App = () => {
+  const queryClient = new QueryClient()
   return (
     <div>
-      <RouterProvider router={router}/>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router}/>
+      </QueryClientProvider>
     </div>
   );
 };

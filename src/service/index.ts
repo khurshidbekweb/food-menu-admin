@@ -1,14 +1,17 @@
 import axios from "axios";
 import { BASE_URL_SERVER } from "../constants";
 
-const custimAxios = axios.create({
+const customAxios = axios.create({
     baseURL: BASE_URL_SERVER,
     timeout: 1000
 });
 
+customAxios.defaults.headers.common[
+    "Authorization"
+  ] = `Bearer ${localStorage.getItem("accessToken")}`;
 
 
-custimAxios.interceptors.response.use(
+customAxios.interceptors.response.use(
     (res) => res,
     (err) => {
         if (err?.response?.status === 406) {
@@ -18,4 +21,4 @@ custimAxios.interceptors.response.use(
     }
 );
 
-export default custimAxios;
+export default customAxios;
