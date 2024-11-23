@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { createContext, ReactNode, useContext, useState } from "react"
 
-type language = string
+type language = string | null
 
 interface LanguageStoreTye{
     language: language,
@@ -15,8 +15,7 @@ interface StoreProviderProps {
 }
 
 export const LanguageProvider:React.FC<StoreProviderProps> = ({children}) => {
-    // const activeLanguageLocalStorge = localStorage.getItem('language')
-    const [activeLanguage, setActiveLanguage] = useState<language>('uz')
+    const [activeLanguage, setActiveLanguage] = useState<language>(localStorage.getItem('language'))
 
     const changeLanguage = (lang: language) => {
         setActiveLanguage(lang);

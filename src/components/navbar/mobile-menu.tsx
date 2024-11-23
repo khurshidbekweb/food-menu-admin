@@ -24,8 +24,8 @@ const MobileMenu = () => {
                         <img width={50} src={logo} className="rounded-full" alt="logo" />
                         <p className="text-[18px] font-semibold">Sharq menu</p>
                     </SheetTitle>
-                    <SheetDescription>
-                        <p className="text-xl text-start">{role==='SUPER_ADMIN'?'Super Admin':'Admin'}</p>
+                    <SheetDescription className="text-start text-xl">
+                    {role==='SUPER_ADMIN'?'Super Admin':'Admin'}
                     </SheetDescription>
                     <div className="flex flex-col space-y-3">
                         {role=='SUPER_ADMIN'?navLinkSuperAdmin.map((nav: navLinkType) => (
