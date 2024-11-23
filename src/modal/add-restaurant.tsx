@@ -1,5 +1,6 @@
 import FileUpload from "@/components/file-upload";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
     Dialog,
     DialogContent,
@@ -17,29 +18,49 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { uselanguageAll, useUserAll } from "@/querys";
+import { QUERY_KEYS } from "@/querys/query-key";
 import { lanuage, Restaurant } from "@/types";
+import { restaurantUtils } from "@/utils/restaurant";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const AddRestaurant = () => {
     const [file, setFile] = useState<File | null>(null);
     const language = uselanguageAll()?.data
-    const users = useUserAll()?.data?.filter((el: Restaurant) => el.restaurant ==null )
-console.log(language, users);
+    const queryClinet = useQueryClient()
+    const users = useUserAll()?.data?.filter((el: Restaurant) => el.restaurant == null)
+    console.log(language, users);
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (e.target.files && e.target.files.length > 0) {
-        setFile(e.target.files[0]);
-      }
+        if (e.target.files && e.target.files.length > 0) {
+            setFile(e.target.files[0]);
+        }
     };
+    const addRestaurnat = useMutation({
+        mutationFn: restaurantUtils.postRestaurant,
+        onSuccess: () => {
+            queryClinet.invalidateQueries({ queryKey: [QUERY_KEYS.restuarant_all] })
+            toast.success('Restaran muvaffaqiyatli qo`shildi')
+        },
+        onError: (err) => {
+            toast.error('Xatolik mavjud')
+            console.log(err);
+        }
+    })
+    const handelAddRestaurant = (e) => {
+
+    }
     return (
         <Dialog>
             <DialogTrigger className="p-2 border rounded-md font-semibold  border-[#2ed573]">Add Restaurant</DialogTrigger>
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle className="mb-4">Add restaurant</DialogTitle>
-                    <DialogDescription className="flex flex-col space-y-4">
-                        <h3>Restaurant nomi kiriting</h3>
-                        {language?.length && language.map((el:lanuage) => (
+                    <h3 className="text-start">Restaurant nomi kiriting</h3>
+                    <form className="w-full p-0" onSubmit={handelAddRestaurant}>
+                    <DialogDescription className="flex flex-col space-y-4 my-2">
+                        {language?.length && language.map((el: lanuage) => (
                             <Input key={el._id} type="text" name={el.code} placeholder={el.code} />
                         ))}
                         <Select>
@@ -48,13 +69,26 @@ console.log(language, users);
                             </SelectTrigger>
                             <SelectContent>
                                 {users?.length && users.map((el: Restaurant) => (
-                                <SelectItem key={el.user._id} value={el.user._id}>{el.user.username}</SelectItem>
+                                    <SelectItem key={el.user._id} value={el.user._id}>{el.user.username}</SelectItem>
                                 ))}
                             </SelectContent>
-                        </Select>
+                        </Select>                        
                     </DialogDescription>
+                    <div className="grid grid-cols-3 gap-2">
+                    {
+                            language?.length && language.map((el: lanuage) => (
+                                <label key={el._id}
+                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed flex gap-2 peer-disabled:opacity-70"
+                                >
+                                    <Checkbox value={el._id} />
+                                    <p>{el.name}</p>
+                                </label>
+                            ))
+                        }
+                    </div>
                     <FileUpload file={file} handleFileChange={handleFileChange} />
-                    <Button>Add</Button>
+                    <Button className="w-full mt-2" type="submit">Add</Button>
+                    </form>
                 </DialogHeader>
             </DialogContent>
         </Dialog>
