@@ -18,15 +18,18 @@ import {
 import { QUERY_KEYS } from "@/querys/query-key";
 import { userUtils } from "@/utils/user.util";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
 import toast from "react-hot-toast";
 
 const AddUser = () => {
     const queryClinet = useQueryClient()
+    const [open, setOpen] = useState(false)
     const addUser = useMutation({
         mutationFn: userUtils.postUser,
         onSuccess: () => {
             queryClinet.invalidateQueries({ queryKey: [QUERY_KEYS.user] })
             toast.success('User muvaffaqiyatli qo`shildi')
+            setOpen(false)
         },
         onError: (err) => {
             toast.error('Xatolik mavjud')
@@ -44,15 +47,13 @@ const AddUser = () => {
         password,role,username
      })
      console.log(addUser.variables);
-     
     }
-
 
 
     return (
         <div>
-            <Dialog>
-                <DialogTrigger className="p-2 border rounded-md font-semibold  border-[#2ed573]">Add user</DialogTrigger>
+            <Dialog open={open} onOpenChange={setOpen}>
+                <DialogTrigger className="p-2 border rounded-md font-semibold  border-[#2ed573]" onClick={() => setOpen(true)}>Add user</DialogTrigger>
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle className="mb-4">Add user 🧑‍🦰</DialogTitle>

@@ -4,6 +4,8 @@ import { Languages, User } from "lucide-react";
 import { IoRestaurantSharp } from "react-icons/io5";
 import { BiCategory } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import { Statistika1 } from "@/components/charts/statistika";
+import { Statistiks2 } from "@/components/charts/statistiks2";
 interface statistika {
     name: string,
     number: string | number,
@@ -59,17 +61,19 @@ const Home = () => {
             <Navbar />
             <div className="home-page px-2 md:px-5">
                 {role === 'SUPER_ADMIN' ? <>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-5">
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 my-5">
                         {superAdmin.map((el: statistika) => (
-                            <Link to={el.link} className={`p-4 shadow-md border flex items-start gap-x-5 rounded-md w-full max-w-xs bg-[${el.color}]`} key={el.name}>
+                            <Link to={el.link} className={`p-5 py-8 shadow-md mx-auto border flex items-start gap-4 rounded-md w-full bg-white`} key={el.name}>
                                 <div className="flex flex-col space-y-4">
-                                    <span className="border p-2 rounded-full text-white shadow">{el.icon}</span>
-                                    <p className="text-2xl font-bold text-white">{el.number}</p>
+                                    <span className="border p-2 rounded-full shadow">{el.icon}</span>
+                                    <p className="text-2xl font-bold">{el.number}</p>
                                 </div>
-                                <p className="text-white text-2xl font-bold">{el.name}</p>
+                                <p className="text-2xl font-bold">{el.name}</p>
                             </Link>
                         ))}
                     </div>
+                    <Statistika1/>
+                    <Statistiks2/>
                 </> : <>Admin</>}
             </div>
         </>
