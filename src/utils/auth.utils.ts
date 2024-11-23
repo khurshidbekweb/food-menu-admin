@@ -12,7 +12,8 @@ export const authUtils = {
             username: username,
             password: password,
         })
-        localStorage.setItem("token", data?.token);
+        localStorage.setItem("token", data?.access_token);
+        localStorage.setItem("role", data?.role);
         return data
     }
 }

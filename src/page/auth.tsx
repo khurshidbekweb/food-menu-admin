@@ -1,15 +1,32 @@
 import { useState } from "react";
 import { Lock, User } from 'lucide-react';
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { authUtils } from "@/utils/auth.utils";
+import toast from "react-hot-toast";
 
 const Auth = () => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate()
+    const auth = useMutation({
+        mutationFn: authUtils.auth,
+        onSuccess: () => {
+            toast.success('Muvaffaqiyatli ro`yxatdan o`tildi')
+            setTimeout(() => navigate('/dashboard'), 500)
+        },
+        onError: (err) => {
+            console.log(err);
+            toast.error('Xatolik mavjud')                
+        }
+    })
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        navigate('/dashboard')
+        auth.mutate({
+            password: password,
+            username: name
+        })
         console.log('Login:', { name, password });
     };
     return (
