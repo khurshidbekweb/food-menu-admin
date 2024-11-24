@@ -1,14 +1,14 @@
 import customAxios from "@/service"
 
 interface postCategory{
-    name: string,
-    image: File,
+    name: Record<string, string> | string,
+    image: string,
     restaurantId: string
 }
 interface editCategory{
     id: string
-    name: string,
-    image: File,
+    name: Record<string, string> | string,
+    image: string,
     restaurantId: string
 }
 
@@ -22,19 +22,15 @@ export const categoryUtils = {
         return data
     },
     postCategory: async ({image, name, restaurantId}: postCategory) => {
-        const formData = new FormData()
-        formData.append('image', image)
-        formData.append('name', name)
-        formData.append('restaurantId', restaurantId)
-        const {data} = await customAxios.post('category', formData)
+        const {data} = await customAxios.post('category', {
+            image, name, restaurantId
+        })
         return data
     },
     editCategory: async ({image, name, restaurantId, id}: editCategory) => {
-        const formData = new FormData()
-        formData.append('image', image)
-        formData.append('name', name)
-        formData.append('restaurantId', restaurantId)
-        const {data} = await customAxios.patch(`category/${id}`, formData)
+        const {data} = await customAxios.patch(`category/${id}`, {
+            image, name, restaurantId
+        })
         return data
     },
     deleteCategory: async (id: string) => {

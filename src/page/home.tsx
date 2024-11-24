@@ -25,10 +25,9 @@ const Home = () => {
 
     // ================== ADMIN
     const me = useUserMe()?.data
-    const foodAll =  useFoodAll(me?.restaurant._id)?.data 
-    const categoryAll = useCategoryAll(me?.restaurant._id)?.data
-    console.log(me?.restaurant?._id, 'mee');
-    console.log(categoryAll, 'mee');
+    const foodAll = role==='ADMIN' ? useFoodAll(me?.restaurant?._id)?.data : undefined 
+    const categoryAll = role==='ADMIN' ? useCategoryAll(me?.restaurant?._id)?.data : undefined
+    localStorage.setItem('restaurentId', JSON.stringify(me?.restaurant))
 
     const superAdmin = [
         {
@@ -86,7 +85,7 @@ const Home = () => {
                 {role === 'SUPER_ADMIN' ? 
                 <>
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-4 my-5">
-                        {superAdmin.map((el: statistika) => (
+                        {superAdmin?.map((el: statistika) => (
                             <Link to={el.link} className={`p-5 py-8 shadow-md mx-auto border flex items-start gap-4 rounded-md w-full bg-white`} key={el.name}>
                                 <div className="flex flex-col space-y-4">
                                     <span className="border p-2 rounded-full shadow">{el.icon}</span>
@@ -102,7 +101,7 @@ const Home = () => {
                 :
                 <>
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-4 my-5">
-                        {Admin.map((el: statistika) => (
+                        {Admin?.map((el: statistika) => (
                             <Link to={el.link} className={`p-5 py-8 shadow-md mx-auto border flex items-start gap-4 rounded-md w-full bg-white`} key={el.name}>
                                 <div className="flex flex-col space-y-4">
                                     <span className="border p-2 rounded-full shadow">{el.icon}</span>

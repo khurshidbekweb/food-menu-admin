@@ -13,7 +13,10 @@ const Auth = () => {
         mutationFn: authUtils.auth,
         onSuccess: () => {
             toast.success('Muvaffaqiyatli ro`yxatdan o`tildi')
-            setTimeout(() => navigate('/dashboard'), 500)
+            setTimeout(() => {
+                navigate('/dashboard')
+                window.location.reload()
+            }, 1000)
         },
         onError: (err) => {
             console.log(err);

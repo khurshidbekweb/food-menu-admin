@@ -5,7 +5,7 @@ import React, { createContext, ReactNode, useContext, useState } from "react"
 
 interface LanguageStoreTye{
     language: Language,
-    changeLanguage: (lang: Language) => void
+    changeLanguage: (lang: Language) => void,
 }
 
 const LanguageStore = createContext<LanguageStoreTye | undefined>(undefined)

@@ -1,21 +1,11 @@
 import customAxios from "@/service"
 
 interface addCategoryImg{
-    description: {
-        uz: string,
-        ru: string,
-        en: string,
-        tr: string,
-    }
+    description: Record<string, string>
     image: File
 }
 interface editCategoryImg{
-    description: {
-        uz: string,
-        ru: string,
-        en: string,
-        tr: string,
-    }
+    description:  Record<string, string>
     image: File,
     id:string
 }

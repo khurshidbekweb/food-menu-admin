@@ -31,7 +31,7 @@ const useUserAll = () => (
 );
 const useUserMe = () => (
     useQuery({
-        queryKey: [QUERY_KEYS.user],
+        queryKey: [QUERY_KEYS.user_me],
         queryFn: () => userUtils.getUserMe()
     })
 );
@@ -39,8 +39,8 @@ const useUserMe = () => (
 
 const useCategoryAll = (restaurantId: string) => (
     useQuery({
-        queryKey: [QUERY_KEYS.category],
-        queryFn:  () =>categoryUtils.getCategory(restaurantId)
+        queryKey: [QUERY_KEYS.category, restaurantId],
+        queryFn:  () => restaurantId ? categoryUtils.getCategory(restaurantId) :Promise.resolve([]),
     })
 )
 const useCategoryOne = (id: string) => (
@@ -73,8 +73,8 @@ const useRestuarantOne = (id:string) => (
 // ============== Food
 const useFoodAll = (restaurantId:string) => (
     useQuery({
-        queryKey: [QUERY_KEYS.food],
-        queryFn: () => foodUtils.getFood(restaurantId)
+        queryKey: [QUERY_KEYS.food, restaurantId],
+        queryFn: () => restaurantId ? foodUtils.getFood(restaurantId) : Promise.resolve([]),
     })
 )
 const useFoodId = (id:string) => (

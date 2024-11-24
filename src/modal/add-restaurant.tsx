@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/select";
 import { uselanguageAll, useUserAll } from "@/querys";
 import { QUERY_KEYS } from "@/querys/query-key";
-import { lanuage, Restaurant } from "@/types";
+import { Restaurant } from "@/types";
 import { restaurantUtils } from "@/utils/restaurant";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
