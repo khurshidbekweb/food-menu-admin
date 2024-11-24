@@ -11,11 +11,8 @@ import { useEffect } from "react";
 import { Language } from "@/types";
 
 const LanguageChange = () => {
-    const languages = uselanguageAll()?.data
-    console.log(languages);
-    
+    const languages = uselanguageAll()?.data    
     const {language, changeLanguage} = useStore()
-    console.log(language);
     
     useEffect(()=>{
        

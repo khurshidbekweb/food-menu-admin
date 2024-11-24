@@ -18,8 +18,12 @@ export const userUtils = {
         const {data} = await customAxios.get('/user')
         return data
     },
+    getUserMe: async () => {
+        const {data} = await customAxios.get('/user/me')
+        return data
+    },
     getUserId: async (id: string) => {
-        const {data} = await customAxios.get(`/user/${id}`)
+        const {data} = await customAxios.get(`/user/single/${id}`)
         return data
     },
     postUser: async ({username, password, role}: postUser) => {

@@ -5,7 +5,11 @@ import { languageUtils } from "@/utils/language.utils";
 import { userUtils } from "@/utils/user.util";
 import { categoryImgUtils } from "@/utils/categoryImg.utils";
 import { restaurantUtils } from "@/utils/restaurant";
+import { categoryUtils } from "@/utils/category";
+import { foodUtils } from "@/utils/food.utils";
 
+
+// ============== Language
 const uselanguageAll = () => (
     useQuery({
         queryKey: [QUERY_KEYS.language_all],
@@ -18,18 +22,42 @@ const useLanguageId = (id: string) => (
         queryFn: () => languageUtils.getLanguageId(id)
     })
 );
+// ============== Users
 const useUserAll = () => (
     useQuery({
         queryKey: [QUERY_KEYS.user],
         queryFn: () => userUtils.getUser()
     })
 );
+const useUserMe = () => (
+    useQuery({
+        queryKey: [QUERY_KEYS.user],
+        queryFn: () => userUtils.getUserMe()
+    })
+);
+// ============== categorys 
+
+const useCategoryAll = (restaurantId: string) => (
+    useQuery({
+        queryKey: [QUERY_KEYS.category],
+        queryFn:  () =>categoryUtils.getCategory(restaurantId)
+    })
+)
+const useCategoryOne = (id: string) => (
+    useQuery({
+        queryKey: [QUERY_KEYS.category],
+        queryFn:  () =>categoryUtils.getCategoryOne(id)
+    })
+)
+
+// ============== categorys IMAGE
 const useCategoryImg = () => (
     useQuery({
         queryKey: [QUERY_KEYS.categoryImg],
         queryFn: () => categoryImgUtils.getcategoryImg()
     })
 );
+// ============== Restaurants
 const useRestuarant = () => (
     useQuery({
         queryKey: [QUERY_KEYS.restuarant_all],
@@ -42,5 +70,19 @@ const useRestuarantOne = (id:string) => (
         queryFn: () => restaurantUtils.getRestaurantOneId(id)
     })
 )
+// ============== Food
+const useFoodAll = (restaurantId:string) => (
+    useQuery({
+        queryKey: [QUERY_KEYS.food],
+        queryFn: () => foodUtils.getFood(restaurantId)
+    })
+)
+const useFoodId = (id:string) => (
+    useQuery({
+        queryKey: [QUERY_KEYS.food],
+        queryFn: () => foodUtils.getFoodId(id)
+    })
+)
 
-export {uselanguageAll, useLanguageId, useUserAll,useCategoryImg,useRestuarant,useRestuarantOne}
+
+export {uselanguageAll,useCategoryAll,useFoodAll,useFoodId,useCategoryOne, useLanguageId, useUserMe, useUserAll,useCategoryImg,useRestuarant,useRestuarantOne}

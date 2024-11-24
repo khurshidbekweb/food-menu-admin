@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import Navbar from "@/components/navbar/navbar";
-import { useCategoryImg, uselanguageAll, useRestuarant, useUserAll } from "@/querys";
-import { Languages, User } from "lucide-react";
+import { useCategoryAll, useCategoryImg, useFoodAll, uselanguageAll, useRestuarant, useUserAll, useUserMe } from "@/querys";
+import { Languages, Soup, User } from "lucide-react";
 import { IoRestaurantSharp } from "react-icons/io5";
-import { BiCategory } from "react-icons/bi";
+import { BiCategory, BiSolidCategory } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { Statistika1 } from "@/components/charts/statistika";
 import { Statistiks2 } from "@/components/charts/statistiks2";
@@ -14,19 +15,27 @@ interface statistika {
     link: string
 }
 
-const Home = () => {
+const Home = () => {    
     const role = localStorage.getItem('role')
-    const languageAll = uselanguageAll()?.data
-    const userAlll = useUserAll()?.data
-    const categoryImg = useCategoryImg()?.data
-    const restuarantAll = useRestuarant()?.data
+    // ================== SUPER ADMIN
+    const userAlll = role=='ADMIN' ? undefined : useUserAll()?.data
+    const categoryImg =  useCategoryImg()?.data
+    const restuarantAll = role==='ADMIN' ? undefined : useRestuarant()?.data
+    const languageAll = role==='ADMIN' ? undefined : uselanguageAll()?.data
+
+    // ================== ADMIN
+    const me = useUserMe()?.data
+    const foodAll =  useFoodAll(me?.restaurant._id)?.data 
+    const categoryAll = useCategoryAll(me?.restaurant._id)?.data
+    console.log(me?.restaurant?._id, 'mee');
+    console.log(categoryAll, 'mee');
 
     const superAdmin = [
         {
             name: 'User',
             number: userAlll?.length == 0 ? '0' : userAlll?.length,
             color: '#f9ca24',
-            icon: <User size={25}/>,
+            icon: <User size={25} />,
             link: '/dashboard/user'
         },
         {
@@ -40,17 +49,33 @@ const Home = () => {
             name: 'Category img',
             number: categoryImg?.length == 0 ? '0' : categoryImg?.length,
             color: '#e056fd',
-            icon: <BiCategory size={25}/>,
+            icon: <BiCategory size={25} />,
             link: '/dashboard/category'
         },
         {
             name: 'Tillar',
             number: languageAll?.length == 0 ? '0' : languageAll?.length,
             color: '#4834d4',
-            icon: <Languages size={25}/>,
+            icon: <Languages size={25} />,
             link: '/dashboard/language'
         },
 
+    ]
+    const Admin = [
+        {
+            name: 'Food',
+            number: foodAll?.length == 0 ? '0' : foodAll?.length,
+            color: '#f9ca24',
+            icon: <Soup size={25} />,
+            link: '/dashboard/food'
+        },
+        {
+            name: 'Category',
+            number: categoryAll?.length == 0 ? '0' : categoryAll?.length,
+            color: '#f9ca24',
+            icon: <BiSolidCategory size={25} />,
+            link: '/dashboard/food'
+        },
     ]
 
 
@@ -58,7 +83,8 @@ const Home = () => {
         <>
             <Navbar />
             <div className="home-page px-2 md:px-5">
-                {role === 'SUPER_ADMIN' ? <>
+                {role === 'SUPER_ADMIN' ? 
+                <>
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-4 my-5">
                         {superAdmin.map((el: statistika) => (
                             <Link to={el.link} className={`p-5 py-8 shadow-md mx-auto border flex items-start gap-4 rounded-md w-full bg-white`} key={el.name}>
@@ -70,9 +96,26 @@ const Home = () => {
                             </Link>
                         ))}
                     </div>
-                    <Statistika1/>
-                    <Statistiks2/>
-                </> : <>Admin</>}
+                    <Statistika1 />
+                    <Statistiks2 />
+                </>
+                :
+                <>
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 my-5">
+                        {Admin.map((el: statistika) => (
+                            <Link to={el.link} className={`p-5 py-8 shadow-md mx-auto border flex items-start gap-4 rounded-md w-full bg-white`} key={el.name}>
+                                <div className="flex flex-col space-y-4">
+                                    <span className="border p-2 rounded-full shadow">{el.icon}</span>
+                                    <p className="text-2xl font-bold">{el.number}</p>
+                                </div>
+                                <p className="text-2xl font-bold">{el.name}</p>
+                            </Link>
+                        ))}
+                    </div>
+                    <Statistika1 />
+                    <Statistiks2 />
+                </>
+                }
             </div>
         </>
     );

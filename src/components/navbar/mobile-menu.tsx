@@ -8,7 +8,7 @@ import {
     SheetTrigger,
 } from "../ui/sheet";
 import logo from '@/assets/image/menu.jpg'
-import { navLinkSuperAdmin } from "@/constants";
+import { navLinkAdmin, navLinkSuperAdmin } from "@/constants";
 import { Link, useLocation } from "react-router-dom";
 import { navLinkType } from "@/types";
 
@@ -33,9 +33,12 @@ const MobileMenu = () => {
                                 {nav.icon}
                                 {nav.element}
                             </Link>
-                        )):<>
-
-                        </>}
+                        )):navLinkAdmin.map((nav: navLinkType) => (
+                            <Link key={nav.path} className={`flex items-center gap-3 p-1 ${nav.path===location.pathname ? 'border rounded-md border-blue-500' : ''}`} to={nav.path}>
+                                {nav.icon}
+                                {nav.element}
+                            </Link>
+                        ))}
                     </div>
                 </SheetHeader>
             </SheetContent>
