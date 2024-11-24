@@ -16,15 +16,6 @@ export interface User{
     updatedAt: string;
     __v: number;
 }
-export interface lanuage{
-    _id: string;
-    code: string;
-    createdAt: string;
-    updatedAt: string;
-    image: string;
-    name: string;
-    __v: number;
-}  
  export interface Language {
     _id: string;
     name: string;
