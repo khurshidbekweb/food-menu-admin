@@ -10,14 +10,15 @@ import { CgTrash } from "react-icons/cg";
 
 interface deleteModal {
     id: string
-    fn: (id: string) => void
+    fn: (id: string) => void,
+    style: string
 }
 
 
-const DeleteModal: React.FC<deleteModal> = ({ fn, id }: deleteModal) => {
+const DeleteModal: React.FC<deleteModal> = ({ fn, id, style }: deleteModal) => {
     return (
         <Dialog>
-            <DialogTrigger><button className=" text-red-800 block ml-auto"><CgTrash /></button></DialogTrigger>
+            <DialogTrigger><button className={` text-red-800 block ml-auto ${style}`}><CgTrash /></button></DialogTrigger>
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle className="text-center my-3">Rostdan ham o'chirmoqchimisiz?</DialogTitle>

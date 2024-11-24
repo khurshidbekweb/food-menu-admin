@@ -16,6 +16,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 const AddLanguage = () => {
     const [file, setFile] = useState<File | null>(null);
+    const [open, setOpen] = useState(false)
     const queryClinet = useQueryClient()
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (e.target.files && e.target.files.length > 0) {
@@ -27,6 +28,7 @@ const AddLanguage = () => {
         onSuccess: () => {
             queryClinet.invalidateQueries({ queryKey: [QUERY_KEYS.language_all] });
             toast.success('Restoran muvaffaqiyatli qo`shildi');
+            setOpen(false)
         },
         onError: (err) => {
             toast.error('Xatolik mavjud');
@@ -44,8 +46,8 @@ const AddLanguage = () => {
         })
     }
     return (
-        <Dialog>
-            <DialogTrigger className="p-2 border rounded-md font-semibold  border-[#2ed573]">Add Language</DialogTrigger>
+        <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger className="p-2 border rounded-md font-semibold  border-[#2ed573]" onClick={() => setOpen(true)}>Add Language</DialogTrigger>
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle className="mb-4">Add language 🌐</DialogTitle>

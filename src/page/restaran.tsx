@@ -57,7 +57,7 @@ const Restaran = () => {
                                 <TableCell className="font-medium">{res.name}</TableCell>
                                 <TableCell>{res.user.username}</TableCell>
                                 <TableCell><img src={`${BASE_URL_SERVER}${res.image}`} alt="" /></TableCell>
-                                <TableCell className=""><DeleteModal fn={deleteRestaran.mutate} id={res._id}/></TableCell>
+                                <TableCell className=""><DeleteModal style="" fn={deleteRestaran.mutate} id={res._id}/></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

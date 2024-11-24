@@ -27,6 +27,7 @@ import toast from "react-hot-toast";
 
 const AddRestaurant = () => {
     const [file, setFile] = useState<File | null>(null);
+    const [open, setOpen] = useState(false)
     const [languages, setLanguages] = useState<string[]>([]);
     const [restaurantName, setRestaurantName] = useState<Record<string, string>>({});
     const queryClient = useQueryClient();
@@ -47,6 +48,7 @@ const AddRestaurant = () => {
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.restuarant_all] });
             toast.success('Restoran muvaffaqiyatli qo`shildi');
+            setOpen(false)
         },
         onError: (err) => {
             toast.error('Xatolik mavjud');
@@ -90,8 +92,8 @@ const AddRestaurant = () => {
     };
 
     return (
-        <Dialog>
-            <DialogTrigger className="p-2 border rounded-md font-semibold border-[#2ed573]">Add Restaurant</DialogTrigger>
+        <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger className="p-2 border rounded-md font-semibold border-[#2ed573]" onClick={() => setOpen(true)}>Add Restaurant</DialogTrigger>
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle className="mb-4">Add restaurant</DialogTitle>

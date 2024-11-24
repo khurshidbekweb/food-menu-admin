@@ -47,4 +47,12 @@ export interface lanuage{
     __v: number;
     // categories: any[];
   }
+  export interface CategoryIMG {
+    _id: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    description: any;
+    image: string;
+    createdAt: string;
+    updatedAt: string;
+  }
   

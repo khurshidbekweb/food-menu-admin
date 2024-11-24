@@ -44,7 +44,7 @@ export const categoryImgUtils = {
         return data
     },
     deleteCategoryImg: async (id:string) => {
-        const {data} = await customAxios.delete(`category-image${id}`)
+        const {data} = await customAxios.delete(`category-image/${id}`)
         return data
     }
 }

@@ -58,7 +58,7 @@ const User = () => {
                                 <TableCell className="font-medium">{user.user.username}</TableCell>
                                 <TableCell>{user.user.password}</TableCell>
                                 <TableCell>{user.user.role}</TableCell>
-                                <TableCell className=""><DeleteModal fn={deleteUser.mutate} id={user.user?._id}/></TableCell>
+                                <TableCell className=""><DeleteModal style="" fn={deleteUser.mutate} id={user.user?._id}/></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

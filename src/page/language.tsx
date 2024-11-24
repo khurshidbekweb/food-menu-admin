@@ -58,7 +58,7 @@ const Language = () => {
                                 <TableCell className="font-medium">{res.name}</TableCell>
                                 <TableCell>{res.code}</TableCell>
                                 <TableCell><img src={`${BASE_URL_SERVER}${res.image}`} alt="" /></TableCell>
-                                <TableCell className=""><DeleteModal fn={deleteLanguage.mutate} id={res._id}/></TableCell>
+                                <TableCell className=""><DeleteModal style="" fn={deleteLanguage.mutate} id={res._id}/></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
