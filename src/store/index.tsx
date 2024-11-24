@@ -15,7 +15,7 @@ interface StoreProviderProps {
 }
 
 export const LanguageProvider:React.FC<StoreProviderProps> = ({children}) => {
-    const [activeLanguage, setActiveLanguage] = useState<Language>(JSON.parse(localStorage.getItem('language')))
+    const [activeLanguage, setActiveLanguage] = useState<Language>(JSON.parse(localStorage.getItem('language')!))
 
     const changeLanguage = (lang: Language) => {
         setActiveLanguage(lang);

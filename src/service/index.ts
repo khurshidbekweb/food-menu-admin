@@ -14,7 +14,8 @@ customAxios.defaults.headers.common[
 customAxios.interceptors.response.use(
     (res) => res,
     (err) => {
-        if (err?.response?.status === 406) {
+        if (err?.response?.status === 422) {
+            localStorage.clear()
             window.location.reload()
         }
         return Promise.reject(err);
