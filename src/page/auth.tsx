@@ -27,7 +27,6 @@ const Auth = () => {
             password: password,
             username: name
         })
-        console.log('Login:', { name, password });
     };
     return (
         <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">

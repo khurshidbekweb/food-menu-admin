@@ -20,8 +20,6 @@ const Home = () => {
     const userAlll = useUserAll()?.data
     const categoryImg = useCategoryImg()?.data
     const restuarantAll = useRestuarant()?.data
-    console.log(restuarantAll);
-
 
     const superAdmin = [
         {

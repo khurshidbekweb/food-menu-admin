@@ -14,7 +14,6 @@ import { useEffect } from "react";
 const Language = () => {
     const languages = uselanguageAll()?.data
     const {language, changeLanguage} = useStore()
-    console.log(language);
     useEffect(()=>{
         if(!language){
             localStorage.setItem('language', 'uz')

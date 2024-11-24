@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 
 export interface navLinkType{
@@ -37,7 +38,7 @@ export interface lanuage{
  export interface Restaurant {
     restaurant: null;
     _id: string;
-    name: string;
+    name: any;
     description: string;
     image: string;
     user: User;
@@ -49,7 +50,6 @@ export interface lanuage{
   }
   export interface CategoryIMG {
     _id: string;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     description: any;
     image: string;
     createdAt: string;

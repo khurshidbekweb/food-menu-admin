@@ -34,7 +34,6 @@ const AddRestaurant = () => {
     const language = uselanguageAll()?.data;
     const users = useUserAll()?.data?.filter((el: Restaurant) => el.restaurant == null);
 
-    console.log(language);
     
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,9 +69,7 @@ const AddRestaurant = () => {
             languages
         };
 
-        addRestaurant.mutate(restaurantData);
-        console.log(addRestaurant.variables);
-        
+        addRestaurant.mutate(restaurantData);        
     };
 
    const handleLanguageChange = (languageId: string, checked: boolean) => {

@@ -46,7 +46,6 @@ const AddUser = () => {
         addUser.mutate({
             password, role, username
         })
-        console.log(addUser.variables);
     }
 
 

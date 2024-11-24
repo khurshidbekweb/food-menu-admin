@@ -21,7 +21,6 @@ import { QUERY_KEYS } from "@/querys/query-key";
 const Language = () => {
     const languages = uselanguageAll()?.data
     const queryClient = useQueryClient()
-    console.log(languages);
     
     const deleteLanguage = useMutation({
         mutationFn: languageUtils.deletLanguage,

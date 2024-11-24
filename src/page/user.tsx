@@ -19,7 +19,6 @@ import toast from "react-hot-toast";
 
 const User = () => {
     const users: Restaurant[] = useUserAll()?.data
-    console.log(users);
     const queryClinet = useQueryClient()
     
     const deleteUser = useMutation({
