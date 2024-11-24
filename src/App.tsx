@@ -56,7 +56,16 @@ const router = createBrowserRouter([
 const App = () => {
   const queryClient = new QueryClient()
   if(!localStorage.getItem('language')){
-      localStorage.setItem('language', 'uz')
+      localStorage.setItem('language', JSON.stringify({
+        code: "uz",
+        createdAt: "2024-11-23T12:44:29.922Z",
+        image:
+            "public/static/uzbekistan.png",
+        name: "O'zbek",
+        updatedAt: "2024-11-23T12:44:29.922Z",
+        __v: 0,
+        _id: "6741ce2da360c5d6323af416"
+    }))
   }
   return (
     <div>

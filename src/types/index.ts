@@ -66,3 +66,15 @@ export interface User{
   updatedAt: string;
   __v: number;
   }
+  export interface Food{
+    _id: string;
+  name: Record<string, string>; // JSON string formatida
+  description: Record<string, string>; // JSON string formatida
+  price: number;
+  image: string;
+  restaurant: Restaurant; // Restaurant obyektiga mos interfeys
+  category: category; // Category obyektiga mos interfeys
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+  }

@@ -16,7 +16,7 @@ const Auth = () => {
             setTimeout(() => {
                 navigate('/dashboard')
                 window.location.reload()
-            }, 1000)
+            }, 1500)
         },
         onError: (err) => {
             console.log(err);

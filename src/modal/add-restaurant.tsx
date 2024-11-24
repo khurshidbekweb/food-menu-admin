@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/select";
 import { uselanguageAll, useUserAll } from "@/querys";
 import { QUERY_KEYS } from "@/querys/query-key";
-import { Restaurant } from "@/types";
+import { Language, Restaurant } from "@/types";
 import { restaurantUtils } from "@/utils/restaurant";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
@@ -97,7 +97,7 @@ const AddRestaurant = () => {
                     <h3 className="text-start">Restaurant nomi kiriting</h3>
                     <form className="w-full p-0" onSubmit={handleAddRestaurant}>
                         <DialogDescription className="flex flex-col space-y-4 my-2">
-                            {language?.length && language.map((el: lanuage) => (
+                            {language?.length && language.map((el: Language) => (
                                 <Input
                                     key={el._id}
                                     type="text"
@@ -121,7 +121,7 @@ const AddRestaurant = () => {
                         </DialogDescription>
 
                         <div className="grid grid-cols-3 gap-2">
-                            {language?.length && language.map((el: lanuage) => (
+                            {language?.length && language.map((el: Language) => (
                                 <label key={el._id} className="text-sm font-medium leading-none flex gap-2">
                                     <Checkbox
                                         checked={languages.includes(el._id)}

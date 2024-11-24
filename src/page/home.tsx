@@ -27,7 +27,6 @@ const Home = () => {
     const me = useUserMe()?.data
     const foodAll = role==='ADMIN' ? useFoodAll(me?.restaurant?._id)?.data : undefined 
     const categoryAll = role==='ADMIN' ? useCategoryAll(me?.restaurant?._id)?.data : undefined
-    localStorage.setItem('restaurentId', JSON.stringify(me?.restaurant))
 
     const superAdmin = [
         {
@@ -89,7 +88,7 @@ const Home = () => {
                             <Link to={el.link} className={`p-5 py-8 shadow-md mx-auto border flex items-start gap-4 rounded-md w-full bg-white`} key={el.name}>
                                 <div className="flex flex-col space-y-4">
                                     <span className="border p-2 rounded-full shadow">{el.icon}</span>
-                                    <p className="text-2xl font-bold">{el.number}</p>
+                                    <p className="text-2xl font-bold">{el?.number}</p>
                                 </div>
                                 <p className="text-2xl font-bold">{el.name}</p>
                             </Link>
@@ -105,7 +104,7 @@ const Home = () => {
                             <Link to={el.link} className={`p-5 py-8 shadow-md mx-auto border flex items-start gap-4 rounded-md w-full bg-white`} key={el.name}>
                                 <div className="flex flex-col space-y-4">
                                     <span className="border p-2 rounded-full shadow">{el.icon}</span>
-                                    <p className="text-2xl font-bold">{el.number}</p>
+                                    <p className="text-2xl font-bold">{el?.number}</p>
                                 </div>
                                 <p className="text-2xl font-bold">{el.name}</p>
                             </Link>

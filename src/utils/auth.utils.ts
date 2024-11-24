@@ -14,6 +14,7 @@ export const authUtils = {
         })
         localStorage.setItem("token", data?.access_token);
         localStorage.setItem("role", data?.role);
+        localStorage.setItem("restaurentId", JSON.stringify(data?.restaurant))
         return data
     }
 }

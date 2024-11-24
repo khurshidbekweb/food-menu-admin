@@ -13,8 +13,11 @@ const LanguageChange = () => {
     const languages = uselanguageAll()?.data
     const { language, changeLanguage } = useStore()
     const role = localStorage.getItem('role')
-    const restaurant:Restaurant = JSON.parse(localStorage.getItem('restaurantId'))
-    const resLang = restaurant?.languages
+    const restaurant:Restaurant = JSON.parse(localStorage.getItem('restaurentId'))
+    const resLang:Language[] = restaurant?.languages
+    console.log(restaurant);
+    
+    
 
     if (!language) {
         localStorage.setItem('language', JSON.stringify({
@@ -31,7 +34,7 @@ const LanguageChange = () => {
 
     return (
         role === 'SUPER_ADMIN' ? <DropdownMenu>
-            <DropdownMenuTrigger><img className="w-[28px] h-[28px] rounded-full" src={`${IMG_BASE_URL}${language.image}`} alt="" /></DropdownMenuTrigger>
+            <DropdownMenuTrigger><img className="w-[28px] h-[28px] rounded-full" src={`${IMG_BASE_URL}${language.image}`} alt="imgC" /></DropdownMenuTrigger>
             <DropdownMenuContent className="!w-[20px]">
                 {
                     languages?.length && languages.map((el: Language) => (
