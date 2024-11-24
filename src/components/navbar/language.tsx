@@ -15,7 +15,6 @@ const LanguageChange = () => {
     const role = localStorage.getItem('role')
     const restaurant:Restaurant = JSON.parse(localStorage.getItem('restaurentId'))
     const resLang:Language[] = restaurant?.languages
-    console.log(restaurant);
     
     
 

@@ -20,7 +20,6 @@ import { IMG_BASE_URL } from "@/constants";
 
 const Restaran = () => {
     const restaurant = useRestuarant()?.data
-    console.log(restaurant);
     
     const queryClient = useQueryClient()
     const deleteRestaran = useMutation({

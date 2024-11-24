@@ -32,7 +32,6 @@ const AddFood = () => {
     const restaurant: Restaurant = JSON.parse(localStorage.getItem('restaurentId'))
     const category = useCategoryAll(restaurant?._id)?.data
     const languages = restaurant?.languages
-    console.log(languages);
     
     const { language } = useStore()
     const [foodName, setFoodName] = useState<Record<string, string>>({});
