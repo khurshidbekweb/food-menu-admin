@@ -50,6 +50,9 @@ const AddFood = () => {
             queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.food] });
             toast.success('Restoran muvaffaqiyatli qo`shildi');
             setOpen(false)
+            setFoodName({})
+            setFoodDescription({})
+            setFile(null)
         },
         onError: (err) => {
             toast.error('Xatolik mavjud');
@@ -67,9 +70,13 @@ const AddFood = () => {
             categoryId: (form.elements.namedItem("categoryId") as HTMLSelectElement).value,
             name: foodName,
             description: foodDescription,
-            price: 0,
+            price: Number((form.elements.namedItem("price") as HTMLSelectElement).value),
             image: file,
             restaurantId: restaurant?._id
+        },{
+            onSuccess: () => {
+                form.reset()
+            }
         })
     }
     const handleNameFood = (e: React.ChangeEvent<HTMLInputElement>, langCode: string) => {
@@ -84,9 +91,9 @@ const AddFood = () => {
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle className="mb-4">New Food</DialogTitle>
-                    <h3 className="text-start">Restaurant nomi kiriting</h3>
                     <form className="w-full p-0" onSubmit={handleAddFood}>
-                        <DialogDescription className="flex flex-col space-y-4 my-2">
+                        <DialogDescription className="flex flex-col space-y-1 my-2">
+                        <p className="text-start">Name</p>
                             {languages?.length && languages.map((el: Language) => (
                                 <Input
                                     key={el._id}
@@ -97,6 +104,7 @@ const AddFood = () => {
                                     onChange={(e) => handleNameFood(e, el.code)}
                                 />
                             ))}
+                            <p className="text-start">Description</p>
                             {languages?.length && languages.map((el: Language) => (
                                 <Input
                                     key={el._id}
@@ -107,7 +115,11 @@ const AddFood = () => {
                                     onChange={(e) => handleNameFoodDescription(e, el.code)}
                                 />
                             ))}
-
+                            <Input
+                                    type="number"
+                                    name='price'
+                                    placeholder='Narxni kiriting'
+                                />
                             <Select name="categoryId">
                                 <SelectTrigger className="w-full">
                                     <SelectValue placeholder="Category chooes" />

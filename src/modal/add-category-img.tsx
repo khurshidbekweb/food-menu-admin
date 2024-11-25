@@ -31,6 +31,8 @@ const AddCategoryImg = () => {
             queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.categoryImg] });
             toast.success('Image muvaffaqiyatli qo`shildi');
             setOpen(false)
+            setFile(null)
+            setDescription({})
         },
         onError: (err) => {
             toast.error('Xatolik mavjud');

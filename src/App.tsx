@@ -9,6 +9,7 @@ import User from "./page/user";
 import Category from "./page/category";
 import {QueryClientProvider, QueryClient} from '@tanstack/react-query'
 import CategoryImg from "./page/category-img";
+import RestaurantUser from "./page/restaurant-user";
 
 
 const router = createBrowserRouter([
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: 'dashboard/user',
         element: <User/>
+      },
+      {
+        path: 'dashboard/restaurant-uers',
+        element: <RestaurantUser/>
       },
       {
         path: 'dashboard/category-img',

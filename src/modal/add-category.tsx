@@ -41,6 +41,7 @@ const AddCategory = () => {
             queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.category] });
             toast.success('Category muvaffaqiyatli qo`shildi');
             setOpen(false)
+            setCategoryName({})
         },
         onError: (err) => {
             toast.error('Xatolik mavjud');
@@ -54,6 +55,10 @@ const AddCategory = () => {
             image: (form.elements.namedItem("category-img") as HTMLSelectElement).value,
             name: JSON.stringify(categoryName),
             restaurantId: restarant._id
+        },{
+            onSuccess:() =>{
+                form.reset(); 
+            }
         })
     }
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>, langCode: string) => {

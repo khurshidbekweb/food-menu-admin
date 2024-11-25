@@ -2,8 +2,7 @@ import { navLinkType } from "@/types";
 import { CassetteTape, Home, Languages, Soup, User, Utensils } from "lucide-react";
 import { BiCategory } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
-
-
+import {GrRestaurant} from 'react-icons/gr'
 export const BASE_URL_SERVER = import.meta.env.VITE_SERVER_BASE_URL; 
 export const IMG_BASE_URL = import.meta.env.VITE_SERVER_IMG_BASE_URL; 
 
@@ -46,6 +45,11 @@ export const navLinkAdmin:navLinkType[] = [
         icon: <BiCategory size={20}/>,
         path: '/dashboard/category',
         element: 'Category'
+    },
+    {
+        icon: <GrRestaurant size={20}/>,
+        path: '/dashboard/restaurant-uers',
+        element: 'Restaurant'
     },
     {
         icon: <Soup size={20}/>,
