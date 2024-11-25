@@ -1,16 +1,13 @@
-import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 const Root = () => {
-    const navigate = useNavigate()    
-  useEffect(() => {
-    if(!localStorage.getItem('token')){
+    const navigate = useNavigate()
+    if (!localStorage.getItem('token')) {
         navigate('/')
-        }
-  },[navigate])
+    }
     return (
         <div className="container mx-auto max-w-6xl">
-            <Outlet/>
+            <Outlet />
         </div>
     );
 };

@@ -70,6 +70,12 @@ const useRestuarantOne = (id:string) => (
         queryFn: () => restaurantUtils.getRestaurantOneId(id)
     })
 )
+const useRestuarantLink = (link:string) => (
+    useQuery({
+        queryKey: [QUERY_KEYS.restuarant_one],
+        queryFn: () => restaurantUtils.getRestaurantQrCode(link)
+    })
+)
 // ============== Food
 const useFoodAll = (restaurantId:string) => (
     useQuery({
@@ -85,4 +91,4 @@ const useFoodId = (id:string) => (
 )
 
 
-export {uselanguageAll,useCategoryAll,useFoodAll,useFoodId,useCategoryOne, useLanguageId, useUserMe, useUserAll,useCategoryImg,useRestuarant,useRestuarantOne}
+export {uselanguageAll,useCategoryAll,useRestuarantLink,useFoodAll,useFoodId,useCategoryOne, useLanguageId, useUserMe, useUserAll,useCategoryImg,useRestuarant,useRestuarantOne}

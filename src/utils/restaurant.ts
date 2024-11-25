@@ -33,8 +33,8 @@ export const restaurantUtils = {
         const  {data} = await customAxios.get(`restaurant/one/${id}`)
         return data
     },
-    getRestaurantQrCode: async () => {
-        const  {data} = await customAxios.get('restaurant/generate/qrcode')
+    getRestaurantQrCode: async (link:string) => {
+        const  {data} = await customAxios.get(`restaurant/generate/qrcode?link=${link}`)
         return data
     },
     postRestaurant: async ({image, languages, name,userId, description}:postRestaurant) => {
