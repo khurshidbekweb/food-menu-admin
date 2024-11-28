@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { authUtils } from "@/utils/auth.utils";
 import toast from "react-hot-toast";
+import { Button } from "@/components/ui/button";
 
 const Auth = () => {
     const [name, setName] = useState('');
@@ -54,7 +55,7 @@ const Auth = () => {
                                 onChange={(e) => setName(e.target.value)}
                                 required
                                 className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
-                                placeholder="Jasurbek"
+                                placeholder="Username"
                             />
                         </div>
 
@@ -73,18 +74,12 @@ const Auth = () => {
                         </div>
                     </div>
                     <div>
-                        <button
+                        <Button
                             type="submit"
-                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-200"
+                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
                         >
                             Login
-                        </button>
-                    </div>
-
-                    <div className="text-center">
-                        <a href="#signup" className="text-sm text-blue-600 hover:text-blue-800">
-                            don't have an account? sign up
-                        </a>
+                        </Button>
                     </div>
                 </form>
             </div>

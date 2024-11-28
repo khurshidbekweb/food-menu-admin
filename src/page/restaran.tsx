@@ -17,9 +17,11 @@ import toast from "react-hot-toast";
 import { QUERY_KEYS } from "@/querys/query-key";
 import { Restaurant } from "@/types";
 import { IMG_BASE_URL } from "@/constants";
+import { useStore } from "@/store";
 
 const Restaran = () => {
     const restaurant = useRestuarant()?.data
+    const {language} = useStore()
     
     const queryClient = useQueryClient()
     const deleteRestaran = useMutation({
@@ -55,9 +57,9 @@ const Restaran = () => {
                     <TableBody>
                         {restaurant?.length && restaurant?.map((res: Restaurant) => (
                             <TableRow key={res._id}>
-                                <TableCell className="font-medium">{res.name}</TableCell>
+                                <TableCell className="font-medium">{JSON.parse(res.name)[language.code]}</TableCell>
                                 <TableCell>{res.user.username}</TableCell>
-                                <TableCell><img className="rounded-sm" src={`${IMG_BASE_URL}${res.image}`} alt="" /></TableCell>
+                                <TableCell><img className="rounded-md w-[70px] h-[70px] object-cover" src={`${IMG_BASE_URL}${res.image}`} alt="" /></TableCell>
                                 <TableCell className=""><DeleteModal style="" fn={deleteRestaran.mutate} id={res._id}/></TableCell>
                             </TableRow>
                         ))}
