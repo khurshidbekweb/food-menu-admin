@@ -29,7 +29,7 @@ import toast from "react-hot-toast";
 const AddFood = () => {
     const [file, setFile] = useState<File | null>(null);
     const [open, setOpen] = useState(false)
-    const restaurant: Restaurant = JSON.parse(localStorage.getItem('restaurentId'))
+    const restaurant: Restaurant = JSON.parse(localStorage.getItem('restaurentId') as string)
     const category = useCategoryAll(restaurant?._id)?.data
     const languages = restaurant?.languages
     

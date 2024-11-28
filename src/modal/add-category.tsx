@@ -26,7 +26,7 @@ import toast from "react-hot-toast";
 const AddCategory = () => {
     const [open, setOpen] = useState(false)
     const [categoryName, setCategoryName] = useState<Record<string, string>>({});
-    const restarant:Restaurant = JSON.parse(localStorage.getItem('restaurentId'))
+    const restarant:Restaurant = JSON.parse(localStorage.getItem('restaurentId') as string)
     const categoryImg = useCategoryImg()?.data
     
     const {language} = useStore()

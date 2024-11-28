@@ -18,7 +18,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
 const FoodPage = () => {
-    const restaurant: Restaurant = JSON.parse(localStorage.getItem('restaurentId'))
+    const restaurant: Restaurant = JSON.parse(localStorage.getItem('restaurentId') as string)
     const {language} = useStore()
     const foods = useFoodAll(restaurant?._id)?.data
     const queryClient = useQueryClient()

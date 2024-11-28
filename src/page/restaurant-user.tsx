@@ -13,7 +13,7 @@ import { useStore } from "@/store";
 import { Restaurant } from "@/types";
 
 const RestaurantUser = () => {
-    const restaurant:Restaurant =  JSON.parse(localStorage.getItem('restaurentId'))
+    const restaurant:Restaurant =  JSON.parse(localStorage.getItem('restaurentId') as string)
     const {language} = useStore()
     const getQrCode = useRestuarantLink(`${DOMEN_URL}${restaurant?._id}`)?.data
     return (

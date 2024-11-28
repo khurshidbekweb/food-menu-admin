@@ -8,15 +8,20 @@ import { uselanguageAll } from "@/querys";
 import { IMG_BASE_URL } from "@/constants";
 import { useStore } from "@/store";
 import { Language, Restaurant } from "@/types";
+import { useTranslation } from "react-i18next";
 
 const LanguageChange = () => {
     const languages = uselanguageAll()?.data
     const { language, changeLanguage } = useStore()
     const role = localStorage.getItem('role')
-    const restaurant:Restaurant = JSON.parse(localStorage.getItem('restaurentId'))
+    const restaurant:Restaurant = JSON.parse(localStorage.getItem('restaurentId') as string)
     const resLang:Language[] = restaurant?.languages
+    const {i18n} = useTranslation()
     
-    
+    const handleChangeLanguage = (lang:Language) => {
+        changeLanguage(lang)
+        i18n.changeLanguage(lang.code)
+    }    
 
     if (!language) {
         localStorage.setItem('language', JSON.stringify({
@@ -37,7 +42,7 @@ const LanguageChange = () => {
             <DropdownMenuContent className="!w-[20px]">
                 {
                     languages?.length && languages.map((el: Language) => (
-                        <DropdownMenuItem className="cursor-pointer" key={el._id} onClick={() => changeLanguage(el)}><img className="w-[30px] h-[30px] rounded-full" src={`${IMG_BASE_URL}${el.image}`} alt="language image" /> {el.name}</DropdownMenuItem>
+                        <DropdownMenuItem className="cursor-pointer" key={el._id} onClick={() => handleChangeLanguage(el)}><img className="w-[30px] h-[30px] rounded-full" src={`${IMG_BASE_URL}${el.image}`} alt="language image" /> {el.name}</DropdownMenuItem>
                     ))
                 }
             </DropdownMenuContent>
@@ -48,7 +53,7 @@ const LanguageChange = () => {
                 <DropdownMenuContent className="!w-[20px]">
                     {
                         resLang?.length && resLang.map((el: Language) => (
-                            <DropdownMenuItem className="cursor-pointer" key={el._id} onClick={() => changeLanguage(el)}><img className="w-[30px] h-[30px] rounded-full" src={`${IMG_BASE_URL}${el.image}`} alt="language image" /> {el.name}</DropdownMenuItem>
+                            <DropdownMenuItem className="cursor-pointer" key={el._id} onClick={() => handleChangeLanguage(el)}><img className="w-[30px] h-[30px] rounded-full" src={`${IMG_BASE_URL}${el.image}`} alt="language image" /> {el.name}</DropdownMenuItem>
                         ))
                     }
                 </DropdownMenuContent>
