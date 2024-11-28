@@ -1,13 +1,17 @@
+import { ImageDown } from "lucide-react";
+import { useTranslation } from "react-i18next";
+
 interface FileUploadProps {
     file: File | null; // Fayl holati
     handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void; // Hodisa funksiyasi
 }
 
 const FileUpload = ({ file, handleFileChange }: FileUploadProps) => {
+    const {t} = useTranslation()
     return (
-        <div className="flex items-start gap-4 gap-x-8">            
+        <div className="flex items-start gap-4 gap-x-8 my-2">            
             <label className="relative">
-                <p className="border p-1 rounded-md font-semibold mt-2 shadow-md cursor-pointer">Choose File</p>
+                <p className="border p-1 rounded-md font-semibold mt-2 shadow-md cursor-pointer flex gap-3">{t("upload_file")} <ImageDown/> </p>
                 <input
                 type="file"
                 className="opacity-0 w-1 absolute"

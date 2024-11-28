@@ -3,6 +3,14 @@
   "sub_admin_restaurand":"Restuarant",
   "sub_admin_category_img":"Kategoriya rasmi",
   "sub_admin_language":"Tillar",
+  "page_home":"Asosiy",
+  "page_category_img":"Asosiy",
+  "page_user":"Foydalanuvchilar",
+  "page_language":"Til",
+  "page_category":"Kategoriya",
+  "page_food":"Taomlar",
+  "page_profile":"Profil",
+  "page_restaurant":"Restoran",
   "admin_food": "Taomlar",
   "admin_category":"Kategoryalar",
   "auth":"Hush kelibsiz",
@@ -39,6 +47,7 @@
   "add_modal_view_qr": "Qr kodi",
   "add_modal_botton": "Qo'shish",
   "qr_code": "Qr kodi",
+  "upload_file": "Rasm tanlang ",
   "qr_code_download": "Qr kodi"
   }
   
