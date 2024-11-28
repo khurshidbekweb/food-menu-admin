@@ -14,10 +14,12 @@ import { languageUtils } from "@/utils/language.utils";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 const AddLanguage = () => {
     const [file, setFile] = useState<File | null>(null);
     const [open, setOpen] = useState(false)
     const queryClinet = useQueryClient()
+    const {t} = useTranslation()
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (e.target.files && e.target.files.length > 0) {
         setFile(e.target.files[0]);
@@ -47,17 +49,17 @@ const AddLanguage = () => {
     }
     return (
         <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger className="p-2 border rounded-md font-semibold  border-[#2ed573]" onClick={() => setOpen(true)}>Add Language</DialogTrigger>
+            <DialogTrigger className="p-2 border rounded-md font-semibold  border-[#2ed573]" onClick={() => setOpen(true)}>{t("add_modal")}</DialogTrigger>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle className="mb-4">Add language 🌐</DialogTitle>
+                    <DialogTitle className="mb-4">{t("add_modal_language")} 🌐</DialogTitle>
                     <form onSubmit={handelAddLanguage}>
                         <DialogDescription className="flex flex-col space-y-4">
                             <Input name="name" type="text" placeholder="Language name" />
                             <Input name="code" type="text" placeholder="Language code" />
                         </DialogDescription>
                         <FileUpload file={file} handleFileChange={handleFileChange} />
-                        <Button type="submit" className="w-full">Add</Button>
+                        <Button type="submit" className="w-full">{t("add_modal_botton")}</Button>
                     </form>
                 </DialogHeader>
             </DialogContent>

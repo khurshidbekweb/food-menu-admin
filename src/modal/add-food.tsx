@@ -25,6 +25,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Plus } from "lucide-react";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 const AddFood = () => {
     const [file, setFile] = useState<File | null>(null);
@@ -32,6 +33,7 @@ const AddFood = () => {
     const restaurant: Restaurant = JSON.parse(localStorage.getItem('restaurentId') as string)
     const category = useCategoryAll(restaurant?._id)?.data
     const languages = restaurant?.languages
+    const {t} = useTranslation()
     
     const { language } = useStore()
     const [foodName, setFoodName] = useState<Record<string, string>>({});
@@ -87,10 +89,10 @@ const AddFood = () => {
     };
     return (
         <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger className="p-2 border rounded-md font-semibold border-[#2ed573] flex items-center gap-1" onClick={() => setOpen(true)}><Plus/> New Food</DialogTrigger>
+            <DialogTrigger className="p-2 border rounded-md font-semibold border-[#2ed573] flex items-center gap-1" onClick={() => setOpen(true)}><Plus/> {t("add_modal")}</DialogTrigger>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle className="mb-4">New Food</DialogTitle>
+                    <DialogTitle className="mb-4">{t("add_modal_food")}</DialogTitle>
                     <form className="w-full p-0" onSubmit={handleAddFood}>
                         <DialogDescription className="flex flex-col space-y-1 my-2">
                         <p className="text-start">Name</p>
@@ -133,7 +135,7 @@ const AddFood = () => {
                         </DialogDescription>
 
                         <FileUpload file={file} handleFileChange={handleFileChange} />
-                        <Button className="w-full mt-2" type="submit">Add</Button>
+                        <Button className="w-full mt-2" type="submit">{t("add_modal_botton")}</Button>
                     </form>
                 </DialogHeader>
             </DialogContent>

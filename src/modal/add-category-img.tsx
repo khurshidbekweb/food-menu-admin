@@ -11,11 +11,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { uselanguageAll } from "@/querys";
 import { QUERY_KEYS } from "@/querys/query-key";
-import { lanuage } from "@/types";
+import { Language } from "@/types";
 import { categoryImgUtils } from "@/utils/categoryImg.utils";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 const AddCategoryImg = () => {
     const [file, setFile] = useState<File | null>(null);
@@ -23,6 +24,7 @@ const AddCategoryImg = () => {
     const [open, setOpen] = useState(false)
     const queryClient = useQueryClient()
     const language = uselanguageAll()?.data;
+    const {t} = useTranslation()
 
 
     const addCategotyImg = useMutation({
@@ -59,13 +61,13 @@ const AddCategoryImg = () => {
 
     return (
         <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger className="p-2 border rounded-md font-semibold  border-[#2ed573]" onClick={() => setOpen(true)}>Add Category</DialogTrigger>
+            <DialogTrigger className="p-2 border rounded-md font-semibold  border-[#2ed573]" onClick={() => setOpen(true)}>{t("add_modal")}</DialogTrigger>
             <DialogContent>
                 <DialogHeader>
                    <form onSubmit={handleAddCategoryImg}>
-                   <DialogTitle className="mb-4">Add category?</DialogTitle>
+                   <DialogTitle className="mb-4">{t("add_modal_category_img")}</DialogTitle>
                     <DialogDescription className="flex flex-col space-y-4">
-                        {language?.length && language.map((el: lanuage) => (
+                        {language?.length && language.map((el: Language) => (
                                 <Input
                                     key={el._id}
                                     type="text"
@@ -77,7 +79,7 @@ const AddCategoryImg = () => {
                             ))}
                     </DialogDescription>
                     <FileUpload file={file} handleFileChange={handleFileChange} />
-                    <Button>Add</Button>
+                    <Button>{t("add_modal_botton")}</Button>
                    </form>
                 </DialogHeader>
             </DialogContent>

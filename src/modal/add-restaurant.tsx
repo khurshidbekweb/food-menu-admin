@@ -24,6 +24,7 @@ import { restaurantUtils } from "@/utils/restaurant";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 const AddRestaurant = () => {
     const [file, setFile] = useState<File | null>(null);
@@ -32,6 +33,7 @@ const AddRestaurant = () => {
     const [restaurantName, setRestaurantName] = useState<Record<string, string>>({});
     const queryClient = useQueryClient();
     const language = uselanguageAll()?.data;
+    const {t} = useTranslation()
     const users = useUserAll()?.data?.filter((el: Restaurant) => el.restaurant == null);
 
     
@@ -90,11 +92,11 @@ const AddRestaurant = () => {
 
     return (
         <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger className="p-2 border rounded-md font-semibold border-[#2ed573]" onClick={() => setOpen(true)}>Add Restaurant</DialogTrigger>
+            <DialogTrigger className="p-2 border rounded-md font-semibold border-[#2ed573]" onClick={() => setOpen(true)}>{t("add_modal")}</DialogTrigger>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle className="mb-4">Add restaurant</DialogTitle>
-                    <h3 className="text-start">Restaurant nomi kiriting</h3>
+                    <DialogTitle className="mb-4">{t("add_modal_restaurant")}</DialogTitle>
+                    <h3 className="text-start">{t("add_modal_restaurant_title")}</h3>
                     <form className="w-full p-0" onSubmit={handleAddRestaurant}>
                         <DialogDescription className="flex flex-col space-y-4 my-2">
                             {language?.length && language.map((el: Language) => (
@@ -133,7 +135,7 @@ const AddRestaurant = () => {
                         </div>
 
                         <FileUpload file={file} handleFileChange={handleFileChange} />
-                        <Button className="w-full mt-2" type="submit">Add</Button>
+                        <Button className="w-full mt-2" type="submit">{t("add_modal_botton")}</Button>
                     </form>
                 </DialogHeader>
             </DialogContent>

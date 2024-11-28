@@ -25,7 +25,20 @@
   "user_usrname": "Ism",
   "user_password": "Parol",
   "user_role": "Roli",
-
-  "qr_code": "Qr kodi"
+  "add_modal": "Qo'shish",
+  "add_modal_restaurant": "Yangi restoran qo'shish",
+  "add_modal_restaurant_title": "Restaurant nomini kiriting",
+  "add_modal_category": "Yangi kategotiya qo'shish",
+  "add_modal_food": "Yangi taom qo'shish",
+  "add_modal_language": "Yangi til qo'shish",
+  "add_modal_category_img": "Yangi kategotiya rasm qo'shish",
+  "add_modal_user": "Yangi foydalanuvchi qo'shish",
+  "add_modal_delete": "Rostdan ham o'chirmoqchimisiz ?",
+  "add_modal_delete_close": "Bekor qilish",
+  "add_modal_delete_delete": "O'chirish",
+  "add_modal_view_qr": "Qr kodi",
+  "add_modal_botton": "Qo'shish",
+  "qr_code": "Qr kodi",
+  "qr_code_download": "Qr kodi"
   }
   

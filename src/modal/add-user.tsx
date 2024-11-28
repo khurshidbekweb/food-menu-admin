@@ -20,10 +20,12 @@ import { userUtils } from "@/utils/user.util";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 const AddUser = () => {
     const queryClinet = useQueryClient()
     const [open, setOpen] = useState(false)
+    const {t} = useTranslation()
     const addUser = useMutation({
         mutationFn: userUtils.postUser,
         onSuccess: () => {
@@ -53,11 +55,11 @@ const AddUser = () => {
         <div>
             <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
-                    <span className="p-2 border rounded-md font-semibold border-[#2ed573]" onClick={() => setOpen(true)}>Add user</span>
+                    <span className="p-2 border rounded-md font-semibold border-[#2ed573]" onClick={() => setOpen(true)}>{t("add_modal")}</span>
                 </DialogTrigger>
                 <DialogContent>
                     <DialogHeader>
-                        <DialogTitle className="mb-4">Add user 🧑‍🦰</DialogTitle>
+                        <DialogTitle className="mb-4">{t("add_modal_user")} 🧑‍🦰</DialogTitle>
                         <form onSubmit={handleAddUser} className="w-full">
                             <DialogDescription className="flex flex-col space-y-4">
                                 <Input name="username" type="text" placeholder="Username" />
@@ -72,7 +74,7 @@ const AddUser = () => {
                                     </SelectContent>
                                 </Select>
                             </DialogDescription>
-                            <Button type="submit" className="mt-5 w-full">Add</Button>
+                            <Button type="submit" className="mt-5 w-full">{t("add_modal_botton")}</Button>
                         </form>
                     </DialogHeader>
                 </DialogContent>

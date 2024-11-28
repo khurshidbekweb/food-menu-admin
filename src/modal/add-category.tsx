@@ -22,12 +22,14 @@ import { categoryUtils } from "@/utils/category";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 const AddCategory = () => {
     const [open, setOpen] = useState(false)
     const [categoryName, setCategoryName] = useState<Record<string, string>>({});
     const restarant:Restaurant = JSON.parse(localStorage.getItem('restaurentId') as string)
     const categoryImg = useCategoryImg()?.data
+    const {t} = useTranslation()
     
     const {language} = useStore()
     const languages = restarant?.languages
@@ -67,11 +69,11 @@ const AddCategory = () => {
 
     return (
         <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger className="p-2 border rounded-md font-semibold  border-[#2ed573]" onClick={() => setOpen(true)}>Add Category</DialogTrigger>
+            <DialogTrigger className="p-2 border rounded-md font-semibold  border-[#2ed573]" onClick={() => setOpen(true)}>{t("add_modal")}</DialogTrigger>
             <DialogContent>
                 <DialogHeader>
                     <form onSubmit={handleAddCategory}>
-                        <DialogTitle className="mb-4">Add category?</DialogTitle>
+                        <DialogTitle className="mb-4">{t("add_modal_category")}</DialogTitle>
                         <DialogDescription className="flex flex-col space-y-4">
                             {languages?.length && languages?.map((el: Language) => (
                                 <Input key={el._id} type="text" placeholder={el.code} name={el.code} value={categoryName[el.code] || ""}
@@ -91,7 +93,7 @@ const AddCategory = () => {
                                 </SelectContent>
                             </Select>
                         </DialogDescription>
-                        <Button className="w-full mt-3" type="submit">Add</Button>
+                        <Button className="w-full mt-3" type="submit">{t("add_modal_botton")}</Button>
                     </form>
                 </DialogHeader>
             </DialogContent>
