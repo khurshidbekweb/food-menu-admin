@@ -7,6 +7,7 @@ import { BiCategory, BiSolidCategory } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { Statistika1 } from "@/components/charts/statistika";
 import { Statistiks2 } from "@/components/charts/statistiks2";
+import { useTranslation } from "react-i18next";
 interface statistika {
     name: string,
     number: string | number,
@@ -22,6 +23,7 @@ const Home = () => {
     const categoryImg =  useCategoryImg()?.data
     const restuarantAll = role==='ADMIN' ? undefined : useRestuarant()?.data
     const languageAll = role==='ADMIN' ? undefined : uselanguageAll()?.data
+    const { t } = useTranslation()
 
     // ================== ADMIN
     const me = useUserMe()?.data
@@ -30,7 +32,7 @@ const Home = () => {
 
     const superAdmin = [
         {
-            name: 'User',
+            name: t("sub_admin_user"),
             number: userAlll?.length == 0 ? '0' : userAlll?.length,
             color: '#f9ca24',
             icon: <User size={25} />,
