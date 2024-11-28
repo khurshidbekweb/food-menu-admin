@@ -18,10 +18,12 @@ import { QUERY_KEYS } from "@/querys/query-key";
 import { Restaurant } from "@/types";
 import { IMG_BASE_URL } from "@/constants";
 import { useStore } from "@/store";
+import { useTranslation } from "react-i18next";
 
 const Restaran = () => {
     const restaurant = useRestuarant()?.data
     const {language} = useStore()
+    const {t} = useTranslation()
     
     const queryClient = useQueryClient()
     const deleteRestaran = useMutation({
@@ -41,16 +43,16 @@ const Restaran = () => {
             <Navbar />
             <div className="px-2 md:px-5">
                 <div className="flex justify-between items-center mt-3">
-                    <h2 className="text-2xl font-semibold">Restaurant</h2>
+                    <h2 className="text-2xl font-semibold">{t("restaurant")}</h2>
                     <AddRestaurant />
                 </div>
                 <Table>
-                    <TableCaption>All user table</TableCaption>
+                    <TableCaption>All restaurant table</TableCaption>
                     <TableHeader>
                         <TableRow>
-                            <TableHead className="w-[100px]">Username</TableHead>
-                            <TableHead>Password</TableHead>
-                            <TableHead>Role</TableHead>
+                            <TableHead className="w-[100px]">{t("restaurant_user_username")}</TableHead>
+                            <TableHead>{t("restaurant_user_password")}</TableHead>
+                            <TableHead>{t("restaurant_user_role")}</TableHead>
                             <TableHead className="text-right"></TableHead>
                         </TableRow>
                     </TableHeader>

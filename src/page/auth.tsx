@@ -5,11 +5,13 @@ import { useMutation } from "@tanstack/react-query";
 import { authUtils } from "@/utils/auth.utils";
 import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 const Auth = () => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate()
+    const {t} = useTranslation()
     const auth = useMutation({
         mutationFn: authUtils.auth,
         onSuccess: () => {
@@ -40,7 +42,7 @@ const Auth = () => {
                 <div className="absolute bottom-0 left-0 w-20 h-20 bg-yellow-200 rounded-full translate-y-1/2 -translate-x-1/2 opacity-50" />
 
                 <div className="text-center">
-                    <h2 className="text-4xl font-bold text-green-600 mb-2">Welcome back!</h2>
+                    <h2 className="text-4xl font-bold text-green-600 mb-2">{t("auth")}!</h2>
                 </div>
 
                 <form onSubmit={handleSubmit} className="mt-8 space-y-6">
@@ -78,7 +80,7 @@ const Auth = () => {
                             type="submit"
                             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
                         >
-                            Login
+                           {t("auth_button")}
                         </Button>
                     </div>
                 </form>

@@ -16,12 +16,14 @@ import { category, Restaurant } from "@/types";
 import { categoryUtils } from "@/utils/category";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 const Category = () => {
     const restaurant:Restaurant = JSON.parse(localStorage.getItem('restaurentId') as string)
     const categoryes = useCategoryAll(restaurant?._id)?.data    
     const  {language} = useStore()
     const queryClient = useQueryClient()
+    const {t} = useTranslation()
     const deleteCategory = useMutation({
     mutationFn: categoryUtils.deleteCategory,
     onSuccess: () => {
@@ -38,15 +40,15 @@ const Category = () => {
             <Navbar />
             <div className="p-2 md:px-5">
                 <div className="flex justify-between items-center ">
-                    <h2 className="text-2xl font-semibold">Category</h2>
+                    <h2 className="text-2xl font-semibold">{t("categories")}</h2>
                     <AddCategory />
                 </div>
                 <Table>
-                    <TableCaption>All language table</TableCaption>
+                    <TableCaption>{t("category_table_all")}</TableCaption>
                     <TableHeader>
                         <TableRow>
-                            <TableHead>Image</TableHead>
-                            <TableHead className="w-[100px]">Name</TableHead>
+                            <TableHead>{t("table_img")}</TableHead>
+                            <TableHead className="w-[100px]">{t("table_name")}</TableHead>
                             <TableHead></TableHead>
                             <TableHead className="text-right"></TableHead>
                         </TableRow>

@@ -16,10 +16,12 @@ import { Restaurant } from "@/types";
 import { userUtils } from "@/utils/user.util";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 const User = () => {
     const users: Restaurant[] = useUserAll()?.data
     const queryClinet = useQueryClient()
+    const {t} = useTranslation()
     
     const deleteUser = useMutation({
      mutationFn: userUtils.deleteUser,
@@ -38,16 +40,16 @@ const User = () => {
             <Navbar />
             <div className="p-2 md:px-5">
                 <div className="flex justify-between items-center ">
-                    <h2 className="text-2xl font-semibold">User</h2>
+                    <h2 className="text-2xl font-semibold">{t("user")}</h2>
                     <AddUser />
                 </div>
                 <Table>
-                    <TableCaption>All user table</TableCaption>
+                    <TableCaption>All users table</TableCaption>
                     <TableHeader>
                         <TableRow>
-                            <TableHead className="w-[100px]">Username</TableHead>
-                            <TableHead>Password</TableHead>
-                            <TableHead>Role</TableHead>
+                            <TableHead className="w-[100px]">{t("user_usrname")}</TableHead>
+                            <TableHead>{t("user_password")}</TableHead>
+                            <TableHead>{t("user_role")}</TableHead>
                             <TableHead className="text-right"></TableHead>
                         </TableRow>
                     </TableHeader>

@@ -17,10 +17,12 @@ import { languageUtils } from "@/utils/language.utils";
 import toast from "react-hot-toast";
 import { QUERY_KEYS } from "@/querys/query-key";
 import { Language } from "@/types";
+import { useTranslation } from "react-i18next";
 
 const LanguagePage = () => {
     const languages = uselanguageAll()?.data
     const queryClient = useQueryClient()
+    const {t} = useTranslation()
     
     const deleteLanguage = useMutation({
         mutationFn: languageUtils.deletLanguage,
@@ -38,16 +40,16 @@ const LanguagePage = () => {
             <Navbar/>
             <div className="p-2 md:px-5">
                 <div className="flex justify-between items-center ">
-                    <h2 className="text-2xl font-semibold">Language</h2>
+                    <h2 className="text-2xl font-semibold">{t("language")}</h2>
                     <AddLanguage />
                 </div>
                 <Table>
                     <TableCaption>All language table</TableCaption>
                     <TableHeader>
                         <TableRow>
-                            <TableHead className="w-[100px]">Name</TableHead>
-                            <TableHead>Code</TableHead>
-                            <TableHead>Image</TableHead>
+                            <TableHead className="w-[100px]">{t("table_name")}</TableHead>
+                            <TableHead>{t("language_code")}</TableHead>
+                            <TableHead>{t("table_img")}</TableHead>
                             <TableHead className="text-right"></TableHead>
                         </TableRow>
                     </TableHeader>

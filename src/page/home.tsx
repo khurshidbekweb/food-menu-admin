@@ -39,21 +39,21 @@ const Home = () => {
             link: '/dashboard/user'
         },
         {
-            name: 'Restuarant',
+            name: t("sub_admin_restaurand"),
             number: restuarantAll?.length == 0 ? '0' : restuarantAll?.length,
             color: '#6ab04c',
             icon: <IoRestaurantSharp size={25} />,
             link: '/dashboard/restaran'
         },
         {
-            name: 'Category img',
+            name: t("sub_admin_category_img"),
             number: categoryImg?.length == 0 ? '0' : categoryImg?.length,
             color: '#e056fd',
             icon: <BiCategory size={25} />,
             link: '/dashboard/category'
         },
         {
-            name: 'Tillar',
+            name: t("sub_admin_language"),
             number: languageAll?.length == 0 ? '0' : languageAll?.length,
             color: '#4834d4',
             icon: <Languages size={25} />,
@@ -63,14 +63,14 @@ const Home = () => {
     ]
     const Admin = [
         {
-            name: 'Food',
+            name: t("admin_food"),
             number: foodAll?.length == 0 ? '0' : foodAll?.length,
             color: '#f9ca24',
             icon: <Soup size={25} />,
             link: '/dashboard/food'
         },
         {
-            name: 'Category',
+            name: t("admin_category"),
             number: categoryAll?.length == 0 ? '0' : categoryAll?.length,
             color: '#f9ca24',
             icon: <BiSolidCategory size={25} />,

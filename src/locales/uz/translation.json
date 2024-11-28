@@ -1,6 +1,31 @@
 {
   "sub_admin_user": "Foydalanuvchilar",
-    "welcome": "Welcome",
-    "submit": "Submit"
+  "sub_admin_restaurand":"Restuarant",
+  "sub_admin_category_img":"Kategoriya rasmi",
+  "sub_admin_language":"Tillar",
+  "admin_food": "Taomlar",
+  "admin_category":"Kategoryalar",
+  "auth":"Hush kelibsiz",
+  "auth_button":"Kirish",
+  "category-img":"Kategotiya rasmi",
+  "categories":"Kategoriya",
+  "category_table_all":"Barcha categoriyalar",
+  "table_img":"Rasm",
+  "table_name":"Nomi",
+  "table_desc":"Tavsif",
+  "table_price":"Narxi",
+  "food":"Taom",
+  "language": "Tillar",
+  "language_code": "Til kodi",
+  "restaurant": "Restoran",
+  "restaurant_user_username": "Ism",
+  "restaurant_user_password": "Parol",
+  "restaurant_user_role": "Roli",
+  "user": "Foydalanuvchi",
+  "user_usrname": "Ism",
+  "user_password": "Parol",
+  "user_role": "Roli",
+
+  "qr_code": "Qr kodi"
   }
   

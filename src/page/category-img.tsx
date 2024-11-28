@@ -9,10 +9,12 @@ import { CategoryIMG } from "@/types";
 import { categoryImgUtils } from "@/utils/categoryImg.utils";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 const CategoryImg = () => {
     const categoryImgAll = useCategoryImg()?.data
     const {language} = useStore()
+    const {t} = useTranslation()
     const queryClient = useQueryClient()
     const deleleteCategoryImg = useMutation({
         mutationFn: categoryImgUtils.deleteCategoryImg,
@@ -31,7 +33,7 @@ const CategoryImg = () => {
             <Navbar />
             <div className="p-2 md:px-5">
                 <div className="flex justify-between items-center">
-                    <h2 className="text-2xl font-semibold">Category Image</h2>
+                    <h2 className="text-2xl font-semibold">{t("category-img")}</h2>
                     <AddCategoryImg />
                 </div>
                 <div className="grid grid-cols-2 gap-3 mt-4">

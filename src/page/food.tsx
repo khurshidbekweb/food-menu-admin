@@ -12,17 +12,18 @@ import DeleteModal from "@/modal/delete-modal";
 import { useFoodAll } from "@/querys";
 import { QUERY_KEYS } from "@/querys/query-key";
 import { useStore } from "@/store";
-import { Food, Language, Restaurant } from "@/types";
+import { Food,  Restaurant } from "@/types";
 import { foodUtils } from "@/utils/food.utils";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 const FoodPage = () => {
     const restaurant: Restaurant = JSON.parse(localStorage.getItem('restaurentId') as string)
     const {language} = useStore()
     const foods = useFoodAll(restaurant?._id)?.data
     const queryClient = useQueryClient()
-
+    const {t} = useTranslation()
     const foodDelete = useMutation({
         mutationFn: foodUtils.deleteFood,
         onSuccess: () => {
@@ -39,17 +40,17 @@ const FoodPage = () => {
             <Navbar />
             <div className="px-2 md:px-5">
                 <div className="flex justify-between items-center mt-2">
-                    <h2 className="text-2xl font-semibold">Food</h2>
+                    <h2 className="text-2xl font-semibold">{t('food')}</h2>
                     <AddFood />
                 </div>
                 <Table>
-                    <TableCaption>All language table</TableCaption>
+                    <TableCaption>All foods table</TableCaption>
                     <TableHeader>
                         <TableRow>
-                            <TableHead>Image</TableHead>
-                            <TableHead className="w-[100px]">Name</TableHead>
-                            <TableHead>Description</TableHead>
-                            <TableHead>Price</TableHead>
+                            <TableHead>{t('table_img')}</TableHead>
+                            <TableHead className="w-[100px]">{t("table_name")}</TableHead>
+                            <TableHead>{t("table_desc")}</TableHead>
+                            <TableHead>{t('table_price')}</TableHead>
                             <TableHead className="text-right"></TableHead>
                         </TableRow>
                     </TableHeader>
