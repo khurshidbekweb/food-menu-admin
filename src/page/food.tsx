@@ -58,8 +58,8 @@ const FoodPage = () => {
                         {foods?.length && foods?.map((res: Food) => (
                             <TableRow key={res._id}>
                                 <TableCell><img className="w-[70px] h-[40px] rounded-md" src={`${IMG_BASE_URL}${res.image}`} alt="food-image" /></TableCell>
-                                <TableCell className="font-medium">{JSON.parse(res.name)[language.code]}</TableCell>
-                                <TableCell className="font-medium">{JSON.parse(res.description)[language.code]}</TableCell>
+                                <TableCell className="font-medium">{res.name[language.code]}</TableCell>
+                                <TableCell className="font-medium">{res.description[language.code]}</TableCell>
                                 <TableCell className="font-medium">{res.price}</TableCell>
                                 <TableCell className=""><DeleteModal style="" fn={foodDelete.mutate} id={res._id}/></TableCell>
                             </TableRow>

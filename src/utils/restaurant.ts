@@ -2,24 +2,14 @@ import customAxios from "@/service"
 
 interface postRestaurant{
     image: File,
-    name: {
-        uz:string,
-        ru:string,
-        en:string,
-        tr:string,
-    },
+    name: Record<string, string>,
     userId: string,
     languages: string[],
     description: string
 }
 interface editRestaurant{
     image: File,
-    name: {
-        uz:string,
-        ru:string,
-        en:string,
-        tr:string,
-    },
+    name: Record<string, string>,
     id:string
     languages: string[]
 }

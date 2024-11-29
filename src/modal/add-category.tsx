@@ -87,7 +87,7 @@ const AddCategory = () => {
                                     {categoryImg?.length && categoryImg.map((el: CategoryIMG) => (
                                         <SelectItem className="grid grid-cols-2 gap-x-1" key={el._id} value={el._id}>
                                             <img className="w-[30px] rounded-md inline-block" src={`${IMG_BASE_URL}${el.image}`} alt="category img" /> 
-                                            <p className="text-black">{JSON.parse(el.description)[language.code]}</p>
+                                            <p className="text-black">{el?.description[language.code]}</p>
                                         </SelectItem>
                                     ))}
                                 </SelectContent>

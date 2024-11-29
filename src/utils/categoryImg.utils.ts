@@ -2,11 +2,11 @@ import customAxios from "@/service"
 
 interface addCategoryImg{
     description: Record<string, string>
-    image: File
+    image: File | null
 }
-interface editCategoryImg{
-    description:  Record<string, string>
-    image: File,
+interface editCategoryImg {
+    description:  Record<string, string>,
+    image: File | null,
     id:string
 }
 
@@ -22,14 +22,18 @@ export const categoryImgUtils = {
     postCategoryImg: async ({description, image}:addCategoryImg) => {
         const formData = new FormData()
         formData.append('description', JSON.stringify(description))
-        formData.append('image', image)
+        if(image) {
+            formData.append('image', image)
+        }
         const {data} = await customAxios.post('category-image', formData)
         return data
     },
     editCategoryImg: async ({description, image, id}: editCategoryImg) => {        
         const formData = new FormData()
         formData.append('description', JSON.stringify(description))
-        formData.append('image', image)
+        if(image) {
+            formData.append('image', image)
+        }
         const {data} = await customAxios.patch(`category-image/${id}`)
         return data
     },

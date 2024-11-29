@@ -28,7 +28,7 @@ const RestaurantUser = () => {
                     <TableHeader>
                         <TableRow>
                             <TableHead>{t("table_name")}:</TableHead>
-                            <TableHead>{JSON.parse(restaurant?.name)[language.code]}</TableHead>
+                            <TableHead>{restaurant?.name[language.code]}</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>

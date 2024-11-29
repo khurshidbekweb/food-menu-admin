@@ -128,7 +128,7 @@ const AddFood = () => {
                                 </SelectTrigger>
                                 <SelectContent>
                                     {category?.length && category.map((el: category) => (
-                                        <SelectItem key={el._id} value={el._id}>{JSON.parse(el.name)[language.code]}</SelectItem>
+                                        <SelectItem key={el._id} value={el._id}>{el.name[language.code]}</SelectItem>
                                     ))}
                                 </SelectContent>
                             </Select>
