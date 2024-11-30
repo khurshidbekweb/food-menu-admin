@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import Auth from "./page/auth";
 import Root from "./layouts/Root";
-import Home from "./page/home";
+import Home from "./home";
 import Language from "./page/language";
 import Restaran from "./page/restaran";
 import Food from "./page/food";
