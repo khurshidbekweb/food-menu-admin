@@ -2,7 +2,7 @@ import { ImageDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 interface FileUploadProps {
-    file: File | null; // Fayl holati
+    file: File | null;
     handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void; // Hodisa funksiyasi
 }
 

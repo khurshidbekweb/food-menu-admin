@@ -95,7 +95,7 @@ const AddFood = () => {
                     <DialogTitle className="mb-4">{t("add_modal_food")}</DialogTitle>
                     <form className="w-full p-0" onSubmit={handleAddFood}>
                         <DialogDescription className="flex flex-col space-y-1 my-2">
-                        <p className="text-start">Name</p>
+                            <p className="text-start">Name</p>
                             {languages?.length && languages.map((el: Language) => (
                                 <Input
                                     key={el._id}

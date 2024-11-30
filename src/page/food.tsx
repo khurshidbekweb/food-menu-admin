@@ -9,6 +9,7 @@ import { Table,
 import { IMG_BASE_URL } from "@/constants";
 import AddFood from "@/modal/add-food";
 import DeleteModal from "@/modal/delete-modal";
+import EditFood from "@/modal/edit-food";
 import { useFoodAll } from "@/querys";
 import { QUERY_KEYS } from "@/querys/query-key";
 import { useStore } from "@/store";
@@ -61,7 +62,7 @@ const FoodPage = () => {
                                 <TableCell className="font-medium">{res.name[language.code]}</TableCell>
                                 <TableCell className="font-medium">{res.description[language.code]}</TableCell>
                                 <TableCell className="font-medium">{res.price}</TableCell>
-                                <TableCell className=""><DeleteModal style="" fn={foodDelete.mutate} id={res._id}/></TableCell>
+                                <TableCell className="flex items-center gap-x-3 mt-3"><EditFood food={res} /> <DeleteModal style="" fn={foodDelete.mutate} id={res._id}/></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
