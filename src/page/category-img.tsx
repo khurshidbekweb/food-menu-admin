@@ -38,10 +38,10 @@ const CategoryImg = () => {
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
                     {categoryImgAll?.length && categoryImgAll.map((el: CategoryIMG) => (
-                        <div className="relative" key={el._id}>
-                            <img className="rounded-md w-full h-[170px]" src={`${IMG_BASE_URL}${el.image}`} alt={el.description.en} />
-                            <p className="absolute bg-secondary p-1 px-3 rounded-lg z-30 top-2 left-2">{el.description[language.code]}</p>
-                            <DeleteModal style="absolute right-1 text-white  bg-red-500 p-2 rounded-md bottom-7" fn={deleleteCategoryImg.mutate} id={el._id}/>
+                        <div className="relative p-2 border rounded-md" key={el._id}>
+                            <img className="rounded-md w-full p-4 h-[170px]" src={`${IMG_BASE_URL}${el.image}`} alt={el.description.en} />
+                            <p className="absolute bg-blue-400 p-1 px-3 rounded-lg z-30 top-1 left-2">{el.description[language.code]}</p>
+                            <DeleteModal style="absolute right-1 text-white  bg-red-500 p-2 rounded-md bottom-2" fn={deleleteCategoryImg.mutate} id={el._id}/>
                         </div>
                     ))}
                 </div>
