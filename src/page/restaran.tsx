@@ -59,7 +59,7 @@ const Restaran = () => {
                     <TableBody>
                         {restaurant?.length && restaurant?.map((res: Restaurant) => (
                             <TableRow key={res._id}>
-                                <TableCell className="font-medium">{res.name[language.code]}</TableCell>
+                                <TableCell className="font-medium">{res.name[language?.code]}</TableCell>
                                 <TableCell>{res.user.username}</TableCell>
                                 <TableCell><img className="rounded-md w-[70px] h-[70px] object-cover" src={`${IMG_BASE_URL}${res.image}`} alt="" /></TableCell>
                                 <TableCell className=""><DeleteModal style="" fn={deleteRestaran.mutate} id={res._id}/></TableCell>
