@@ -79,7 +79,7 @@ const AddCategoryImg = () => {
                             ))}
                     </DialogDescription>
                     <FileUpload file={file} handleFileChange={handleFileChange} />
-                    <Button>{t("add_modal_botton")}</Button>
+                    <Button className="w-full">{t("add_modal_botton")}</Button>
                    </form>
                 </DialogHeader>
             </DialogContent>

@@ -36,7 +36,7 @@ const CategoryImg = () => {
                     <h2 className="text-2xl font-semibold">{t("category-img")}</h2>
                     <AddCategoryImg />
                 </div>
-                <div className="grid grid-cols-2 gap-3 mt-4">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
                     {categoryImgAll?.length && categoryImgAll.map((el: CategoryIMG) => (
                         <div className="relative" key={el._id}>
                             <img className="rounded-md w-full h-[170px]" src={`${IMG_BASE_URL}${el.image}`} alt={el.description.en} />
