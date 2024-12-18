@@ -2,6 +2,7 @@ import Navbar from "@/components/navbar/navbar";
 import { IMG_BASE_URL } from "@/constants";
 import AddCategoryImg from "@/modal/add-category-img";
 import DeleteModal from "@/modal/delete-modal";
+import EditCateoryImage from "@/modal/edit-cateory-image";
 import { useCategoryImg } from "@/querys";
 import { QUERY_KEYS } from "@/querys/query-key";
 import { useStore } from "@/store";
@@ -13,7 +14,9 @@ import { useTranslation } from "react-i18next";
 
 const CategoryImg = () => {
     const categoryImgAll = useCategoryImg()?.data
-    const {language} = useStore()
+    console.log(categoryImgAll);
+    
+    const {language} = useStore()    
     const {t} = useTranslation()
     const queryClient = useQueryClient()
     const deleleteCategoryImg = useMutation({
@@ -39,8 +42,9 @@ const CategoryImg = () => {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
                     {categoryImgAll?.length && categoryImgAll.map((el: CategoryIMG) => (
                         <div className="relative p-2 border rounded-md" key={el._id}>
-                            <img className="rounded-md w-full p-4 h-[170px]" src={`${IMG_BASE_URL}${el.image}`} alt={el.description.en} />
-                            <p className="absolute bg-blue-400 p-1 px-3 rounded-lg z-30 top-1 left-2">{el.description[language.code]}</p>
+                            <EditCateoryImage categoryImg={el}/>
+                            <img className="rounded-md w-full p-4 h-[170px]" src={`${IMG_BASE_URL}${el.image}`} alt={''} />
+                            <p className="absolute bg-blue-400 p-1 px-3 rounded-lg z-30 top-1 left-2">{el?.description[language?.code]}</p>
                             <DeleteModal style="absolute right-1 text-white  bg-red-500 p-2 rounded-md bottom-2" fn={deleleteCategoryImg.mutate} id={el._id}/>
                         </div>
                     ))}

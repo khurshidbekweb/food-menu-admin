@@ -34,7 +34,7 @@ export const categoryImgUtils = {
         if(image) {
             formData.append('image', image)
         }
-        const {data} = await customAxios.patch(`category-image/${id}`)
+        const {data} = await customAxios.patch(`category-image/${id}`, formData)
         return data
     },
     deleteCategoryImg: async (id:string) => {

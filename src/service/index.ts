@@ -3,7 +3,7 @@ import { BASE_URL_SERVER } from "../constants";
 
 const customAxios = axios.create({
     baseURL: BASE_URL_SERVER,
-    timeout: 1000
+    timeout: 5000
 });
 
 customAxios.defaults.headers.common[
