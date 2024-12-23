@@ -26,7 +26,6 @@ const AddCategoryImg = () => {
     const language = uselanguageAll()?.data;
     const {t} = useTranslation()
 
-
     const addCategotyImg = useMutation({
         mutationFn: categoryImgUtils.postCategoryImg,
         onSuccess: () => {

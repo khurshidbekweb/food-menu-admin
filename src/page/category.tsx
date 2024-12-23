@@ -9,6 +9,7 @@ import { Table,
 import { IMG_BASE_URL } from "@/constants";
 import AddCategory from "@/modal/add-category";
 import DeleteModal from "@/modal/delete-modal";
+import EditCategory from "@/modal/edit-category";
 import { useCategoryAll } from "@/querys";
 import { QUERY_KEYS } from "@/querys/query-key";
 import { useStore } from "@/store";
@@ -60,6 +61,7 @@ const Category = () => {
                                 <TableCell className="font-medium">{res.name[language.code]}</TableCell>
                                 {/* <TableCell><img src={`${IMG_BASE_URL}${res.image}`} alt="category img" /></TableCell> */}
                                 <TableCell className=""><DeleteModal style="" fn={deleteCategory.mutate} id={res._id}/></TableCell>
+                                <TableCell className=""><EditCategory category={res} id={res._id}/></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
