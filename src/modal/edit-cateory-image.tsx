@@ -25,7 +25,6 @@ interface editCottageIMage {
 
 const EditCateoryImage = ({ categoryImg }: editCottageIMage) => {
     const [file, setFile] = useState<File | null>(null);
-    console.log(categoryImg);
     
     const [description, setDescription] = useState<Record<string, string>>(categoryImg?.description);
     const [open, setOpen] = useState(false)
@@ -61,8 +60,6 @@ const EditCateoryImage = ({ categoryImg }: editCottageIMage) => {
             image: file,
             description
         })
-        console.log(editCategotyImg.variables);
-        
     }
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>, langCode: string) => {
         setDescription(prev => ({ ...prev, [langCode]: e.target.value }));

@@ -24,7 +24,6 @@ interface propsCategory{
 }
 
 const EditCategory = ({category,id}:propsCategory) => {
-    console.log(category);
     
     const [file, setFile] = useState<File | null>(null);
     const [name, setName] = useState<Record<string, string>>(category.name);

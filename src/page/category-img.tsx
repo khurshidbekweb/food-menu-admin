@@ -14,7 +14,6 @@ import { useTranslation } from "react-i18next";
 
 const CategoryImg = () => {
     const categoryImgAll = useCategoryImg()?.data
-    console.log(categoryImgAll);
     
     const {language} = useStore()    
     const {t} = useTranslation()

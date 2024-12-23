@@ -24,7 +24,6 @@ interface PropsFood{
 const EditFood = ({food}:PropsFood) => {
     const [file, setFile] = useState<File | null>(null);
     const [open, setOpen] = useState(false)
-    console.log(food);
     const {language} = useStore()
     const restaurant: Restaurant = JSON.parse(localStorage.getItem('restaurentId') as string)
     const languages = restaurant?.languages    
@@ -58,7 +57,6 @@ const EditFood = ({food}:PropsFood) => {
             name: foodName,
             price: Number((form.elements.namedItem("price") as HTMLSelectElement).value)
         })
-        console.log(editFood.variables);        
     }
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length > 0) {
