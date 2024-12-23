@@ -20,7 +20,7 @@ const DeleteModal: React.FC<deleteModal> = ({ fn, id, style }: deleteModal) => {
     const {t} = useTranslation()
     return (
         <Dialog>
-            <DialogTrigger><button className={` text-red-800 block ml-auto ${style}`}><CgTrash /></button></DialogTrigger>
+            <DialogTrigger><button className={` text-red-800 block ml-auto ${style}`}><CgTrash size={23} /></button></DialogTrigger>
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle className="text-center my-3">{t("add_modal_delete")}</DialogTitle>

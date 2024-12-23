@@ -27,7 +27,7 @@ const EditCategory = ({category,id}:propsCategory) => {
     console.log(category);
     
     const [file, setFile] = useState<File | null>(null);
-    const [name, setName] = useState<Record<string, string>>({});
+    const [name, setName] = useState<Record<string, string>>(category.name);
     const [open, setOpen] = useState(false)
     const restarant: Restaurant = JSON.parse(localStorage.getItem('restaurentId') as string)
     const { t } = useTranslation()
@@ -55,24 +55,19 @@ const EditCategory = ({category,id}:propsCategory) => {
     })
     const handleEditCategoryImg = (e: React.FormEvent) => {
         e.preventDefault()
-        const form = e.target as HTMLFormElement;
         addCategory.mutate({
             id: id,
             image: file,
             name: name,
             restaurantId: restarant._id
-        },{
-            onSuccess:() =>{
-                form.reset(); 
-            }
-        })
+        },)
     }
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>, langCode: string) => {
         setName(prev => ({ ...prev, [langCode]: e.target.value }));
     };
     return (
         <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger className="p-2 border rounded-md font-semibold  border-[#2ed573] absolute right-1" onClick={() => setOpen(true)}><Pen /></DialogTrigger>
+            <DialogTrigger className="" onClick={() => setOpen(true)}><Pen size={20}/></DialogTrigger>
             <DialogContent>
                 <DialogHeader>
                     <form onSubmit={handleEditCategoryImg}>

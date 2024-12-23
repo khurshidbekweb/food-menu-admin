@@ -10,13 +10,16 @@ import {
 import { Download } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { IoQrCodeOutline } from "react-icons/io5";
+import ShareLink from "./share-link";
 
 interface QrCodeProps {
-    data: string
+    data: string,
+    id:string
 }
 
-const ViewQRCode = ({ data }: QrCodeProps) => {
+const ViewQRCode = ({ data, id }: QrCodeProps) => {
     const {t} = useTranslation()
+    
     return (
         <Dialog>
             <DialogTrigger className="flex"><IoQrCodeOutline size={25} /></DialogTrigger>
@@ -26,6 +29,7 @@ const ViewQRCode = ({ data }: QrCodeProps) => {
                     <DialogDescription>
                         <img className="w-[200px] h-[200px] mx-auto rounded-sm" src={data} alt="qr code" />
                     </DialogDescription>
+                <ShareLink id={id}/>
                 </DialogHeader>
                 <Button onClick={() => {
                     const link = document.createElement("a");

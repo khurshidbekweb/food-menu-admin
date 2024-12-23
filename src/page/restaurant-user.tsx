@@ -46,7 +46,7 @@ const RestaurantUser = () => {
                             </TableRow>
                             <TableRow>
                                 <TableCell>{t("qr_code")}: </TableCell>
-                                <TableCell className="font-medium"> <ViewQRCode data={getQrCode}/></TableCell>
+                                <TableCell className="font-medium"> <ViewQRCode id={restaurant?._id} data={getQrCode}/></TableCell>
                             </TableRow>
                     </TableBody>
                 </Table>
