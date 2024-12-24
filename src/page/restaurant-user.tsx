@@ -8,7 +8,7 @@ import { Table,
     TableRow } from "@/components/ui/table";
 import { DOMEN_URL, IMG_BASE_URL } from "@/constants";
 import ViewQRCode from "@/modal/view-img";
-import { useRestuarantLink } from "@/querys";
+import { useCategoryAll, useFoodAll, useRestuarantLink } from "@/querys";
 import { useStore } from "@/store";
 import { Restaurant } from "@/types";
 import { useTranslation } from "react-i18next";
@@ -16,15 +16,19 @@ import { useTranslation } from "react-i18next";
 const RestaurantUser = () => {
     const restaurant:Restaurant =  JSON.parse(localStorage.getItem('restaurentId') as string)
     const {language} = useStore()
+    const foodAll = useFoodAll(restaurant?._id)?.data
     const {t} = useTranslation()
+    const categoryAll = useCategoryAll(restaurant?._id)?.data
     const getQrCode = useRestuarantLink(`${DOMEN_URL}${restaurant?._id}`)?.data
+    console.log(restaurant);
+    
     return (
         <>
             <Navbar/>
             <div className="px-3 md:px-5 mt-2">
                 <img className="w-[250px] h-[250px] object-cover rounded-full mx-auto" src={`${IMG_BASE_URL}${restaurant?.image}`} alt="" />
                 <Table>
-                    <TableCaption>Restaurant user</TableCaption>
+                    <TableCaption>Restaurant</TableCaption>
                     <TableHeader>
                         <TableRow>
                             <TableHead>{t("table_name")}:</TableHead>
@@ -33,16 +37,12 @@ const RestaurantUser = () => {
                     </TableHeader>
                     <TableBody>
                             <TableRow>
-                                <TableCell>{t("table_desc")}: </TableCell>
-                                {/* <TableCell className="font-medium">{JSON.parse(restaurant?.description)[language?.code]}</TableCell> */}
-                            </TableRow>
-                            <TableRow>
                                 <TableCell>{t("food")}: </TableCell>
-                                <TableCell className="font-medium">{restaurant?.name[language?.code]}</TableCell>
+                                <TableCell className="font-medium">{foodAll?.length}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell>{t("categories")}: </TableCell>
-                                <TableCell className="font-medium">{}</TableCell>
+                                <TableCell className="font-medium">{categoryAll?.length}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell>{t("qr_code")}: </TableCell>
