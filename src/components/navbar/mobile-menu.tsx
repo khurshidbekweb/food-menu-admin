@@ -11,7 +11,7 @@ import logo from '@/assets/image/menu.jpg'
 import { Link, useLocation } from "react-router-dom";
 import { navLinkType } from "@/types";
 import { useTranslation } from "react-i18next";
-import { CassetteTape, Home, Languages, Soup, User, Utensils } from "lucide-react";
+import { Home, Languages, Soup, User, Utensils } from "lucide-react";
 import { BiCategory } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import {GrRestaurant} from 'react-icons/gr'
@@ -42,11 +42,6 @@ const navLinkSuperAdmin:navLinkType[] = [
         path: '/dashboard/user',
         icon: <User size={20}/>,
         element: t("page_user")
-    },
-    {
-        path: '/dashboard/category-img',
-        icon: <CassetteTape size={20}/>,
-        element: t("page_category_img")
     },
 ]
 

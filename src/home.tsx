@@ -46,13 +46,6 @@ const Home = () => {
             link: '/dashboard/restaran'
         },
         {
-            name: t("sub_admin_category_img"),
-            number: categoryImg?.length == 0 ? '0' : categoryImg?.length,
-            color: '#e056fd',
-            icon: <BiCategory size={25} />,
-            link: '/dashboard/category'
-        },
-        {
             name: t("sub_admin_language"),
             number: languageAll?.length == 0 ? '0' : languageAll?.length,
             color: '#4834d4',
@@ -96,8 +89,6 @@ const Home = () => {
                             </Link>
                         ))}
                     </div>
-                    <Statistika1 />
-                    <Statistiks2 />
                 </>
                 :
                 <>
@@ -112,8 +103,6 @@ const Home = () => {
                             </Link>
                         ))}
                     </div>
-                    <Statistika1 />
-                    <Statistiks2 />
                 </>
                 }
             </div>
