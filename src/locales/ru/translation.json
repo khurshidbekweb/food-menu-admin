@@ -50,5 +50,6 @@
   "upload_file": "Выберите изображение",
   "user_log_out": "Выход",
   "user_profile": "Профиль",
-  "qr_code_download": "Скачать QR код"
+  "qr_code_download": "Скачать QR код",
+  "createAt":"Время создания"
 }

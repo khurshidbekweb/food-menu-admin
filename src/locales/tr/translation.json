@@ -50,5 +50,6 @@
   "upload_file": "Resim seçin",
   "user_log_out": "Çıkış yap",
   "user_profile": "Profil",
-  "qr_code_download": "QR kodunu indir"
+  "qr_code_download": "QR kodunu indir",
+  "createAt":"Yaratılan zaman"
 }
