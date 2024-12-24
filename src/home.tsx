@@ -1,12 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import Navbar from "@/components/navbar/navbar";
-import { useCategoryAll, useCategoryImg, useFoodAll, uselanguageAll, useRestuarant, useUserAll, useUserMe } from "@/querys";
+import { useCategoryAll, useFoodAll, uselanguageAll, useRestuarant, useUserAll, useUserMe } from "@/querys";
 import { Languages, Soup, User } from "lucide-react";
 import { IoRestaurantSharp } from "react-icons/io5";
-import { BiCategory, BiSolidCategory } from "react-icons/bi";
+import { BiSolidCategory } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { Statistika1 } from "@/components/charts/statistika";
-import { Statistiks2 } from "@/components/charts/statistiks2";
 import { useTranslation } from "react-i18next";
 interface statistika {
     name: string,
@@ -20,7 +18,6 @@ const Home = () => {
     const role = localStorage.getItem('role')
     // ================== SUPER ADMIN
     const userAlll = role=='ADMIN' ? undefined : useUserAll()?.data
-    const categoryImg =  useCategoryImg()?.data
     const restuarantAll = role==='ADMIN' ? undefined : useRestuarant()?.data
     const languageAll = role==='ADMIN' ? undefined : uselanguageAll()?.data
     const { t } = useTranslation()
