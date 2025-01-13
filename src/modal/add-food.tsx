@@ -104,6 +104,7 @@ const AddFood = () => {
                                     placeholder={el.code}
                                     value={foodName[el.code] || ""}
                                     onChange={(e) => handleNameFood(e, el.code)}
+                                    required
                                 />
                             ))}
                             <p className="text-start">Description</p>
@@ -115,14 +116,16 @@ const AddFood = () => {
                                     placeholder={el.code}
                                     value={foodDescription[el.code] || ""}
                                     onChange={(e) => handleNameFoodDescription(e, el.code)}
+                                    required
                                 />
                             ))}
                             <Input
                                     type="number"
                                     name='price'
                                     placeholder='Narxni kiriting'
+                                    required
                                 />
-                            <Select name="categoryId">
+                            <Select name="categoryId" required>
                                 <SelectTrigger className="w-full">
                                     <SelectValue placeholder="Category chooes" />
                                 </SelectTrigger>
@@ -134,7 +137,7 @@ const AddFood = () => {
                             </Select>
                         </DialogDescription>
 
-                        <FileUpload file={file} handleFileChange={handleFileChange} />
+                        <FileUpload file={file} handleFileChange={handleFileChange}/>
                         <Button className="w-full mt-2" type="submit">{t("add_modal_botton")}</Button>
                     </form>
                 </DialogHeader>

@@ -13,6 +13,7 @@ const FileUpload = ({ file, handleFileChange }: FileUploadProps) => {
             <label className="relative">
                 <p className="border p-1 rounded-md font-semibold mt-2 shadow-md cursor-pointer flex gap-3">{t("upload_file")} <ImageDown/> </p>
                 <input
+                required
                 type="file"
                 className="opacity-0 w-1 absolute"
                 onChange={handleFileChange}
