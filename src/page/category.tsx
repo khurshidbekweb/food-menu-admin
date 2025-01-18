@@ -57,9 +57,8 @@ const Category = () => {
                     <TableBody>
                         {categoryes?.length && categoryes?.map((res: category) => (
                             <TableRow key={res._id}>
-                                <TableCell><img className="w-[40px] h-[40px] rounded-full" src={`${IMG_BASE_URL}${res?.image}`} alt="" /></TableCell>
-                                <TableCell className="font-medium">{res?.name[language?.code]}</TableCell>
-                                {/* <TableCell><img src={`${IMG_BASE_URL}${res.image}`} alt="category img" /></TableCell> */}
+                                <TableCell className="w-[100px]"><img className="w-[40px] h-[40px] rounded-full" src={`${IMG_BASE_URL}${res?.image}`} alt="" /></TableCell>
+                                <TableCell className="font-medium w-[200px]">{res?.name[language?.code]}</TableCell>
                                 <TableCell className="flex gap-x-4 items-center">
                                     <DeleteModal style="" fn={deleteCategory.mutate} id={res?._id}/>
                                     <EditCategory category={res} id={res?._id}/>

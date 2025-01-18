@@ -56,6 +56,7 @@ const AddCategory = () => {
         },{
             onSuccess:() =>{
                 form.reset(); 
+                setFile(null)
             }
         })
     }
