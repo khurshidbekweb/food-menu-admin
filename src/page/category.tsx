@@ -25,6 +25,7 @@ const Category = () => {
     const  {language} = useStore()
     const queryClient = useQueryClient()
     const {t} = useTranslation()
+    
     const deleteCategory = useMutation({
     mutationFn: categoryUtils.deleteCategory,
     onSuccess: () => {
