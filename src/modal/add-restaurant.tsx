@@ -37,7 +37,6 @@ const AddRestaurant = () => {
     const language = uselanguageAll()?.data;
     const {t} = useTranslation()
     const users = useUserAll()?.data?.filter((el: Restaurant) => el.restaurant == null);
-
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length > 0) {
             setFile(e.target.files[0]);
@@ -76,7 +75,8 @@ const AddRestaurant = () => {
         addRestaurant.mutate(restaurantData);        
     };
 
-   const handleLanguageChange = (languageId: string, checked: boolean) => {
+
+const handleLanguageChange = (languageId: string, checked: boolean) => {
         setLanguages((prevLanguages) => {
             if (checked) {
                 // Agar checkbox tanlangan bo'lsa, uni arrayga qo'shish
@@ -112,22 +112,27 @@ const AddRestaurant = () => {
                                 />
                             ))}
                             <div className="flex justify-between items-center gap-2">
-                                <Select name="userId">
-                                    <SelectTrigger className="w-full">
-                                        <SelectValue placeholder="User Id" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        {users?.length && users.filter((user:Restaurant)=>user.user.role=="ADMIN").map((el: Restaurant) => (
-                                            <SelectItem key={el.user._id} value={el.user._id}>{el.user.username}</SelectItem>
-                                        ))}
-                                    </SelectContent>
-                                </Select>
-                                <Input
-                                    type="tel"
-                                    defaultValue={0}
-                                    name="serviceCharge"
-                                    placeholder={t('service_charge')}
-                                />                                    
+                                <label className="w-full">
+                                    <span className="text-black">{t('user_select')}</span>
+                                    <Select name="userId">
+                                        <SelectTrigger className="w-full">
+                                            <SelectValue placeholder="User Id" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            {users?.length && users.filter((user:Restaurant)=>user.user.role=="ADMIN").map((el: Restaurant) => (
+                                                <SelectItem key={el.user._id} value={el.user._id}>{el.user.username}</SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+                                </label>
+                                <label className="w-full">
+                                    <span className="text-black">{t('service_charge')}</span>
+                                    <Input
+                                        type="tel"
+                                        defaultValue={0}
+                                        name="serviceCharge"
+                                    />
+                                </label>                                    
                             </div>                            
                         </DialogDescription>
 

@@ -9,7 +9,7 @@ import {
 
 interface ImageCropperProps {
     src: string;
-    onCrop: (croppedImage: string) => void;
+    onCrop: (croppedImage: File) => void;
 }
 
 const ImageCropper = ({ src, onCrop }: ImageCropperProps) => {
@@ -17,15 +17,22 @@ const ImageCropper = ({ src, onCrop }: ImageCropperProps) => {
     const cropperRef = useRef<any>(null);
     const [open, setOpen] = useState(true)
     const getCroppedImage = () => {
-        if (cropperRef.current) {
-            const croppedDataUrl = cropperRef.current.cropper
-                .getCroppedCanvas()
-                .toDataURL(); // Rasmni base64 formatida olish
-            onCrop(croppedDataUrl);
-            setOpen(false)
+        if (cropperRef.current && cropperRef.current.cropper) {
+            const cropper = cropperRef.current.cropper;
+    
+            cropper.getCroppedCanvas({
+                width: 800, // O‘zgarmas width
+                height: 300, // O‘zgarmas height
+            }).toBlob((blob: BlobPart) => {
+                if (blob) {
+                    const croppedFile = new File([blob], "cropped-image.png", { type: "image/png" });
+    
+                    onCrop(croppedFile); // Yangi qirqilgan rasmni qaytarish
+                    setOpen(false);
+                }
+            }, "image/png"); // PNG formatida
         }
     };
-
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger></DialogTrigger>

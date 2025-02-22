@@ -52,5 +52,7 @@
   "user_profile": "Profil",
   "qr_code_download": "Qr kodi",
   "createAt":"Yaratilgan vaqt",
-  "service_charge":"Xizmat haqi(%)"
+  "service_charge":"Xizmat haqi(%)",
+  "cover_image":"Banner uchun rasm",
+  "user_select":"Restaurant egasi"
 }
