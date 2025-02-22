@@ -51,6 +51,6 @@
   "user_log_out": "Chiqish",
   "user_profile": "Profil",
   "qr_code_download": "Qr kodi",
-  "createAt":"Yaratilgan vaqt"
-  }
-  
+  "createAt":"Yaratilgan vaqt",
+  "service_charge":"Xizmat haqi(%)"
+}

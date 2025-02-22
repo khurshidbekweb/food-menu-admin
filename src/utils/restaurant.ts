@@ -5,8 +5,11 @@ interface postRestaurant{
     name: Record<string, string>,
     userId: string,
     languages: string[],
-    description: string
+    description: string,
+    serviceCharge: string,
+    coverImage: File 
 }
+
 interface editRestaurant{
     image: File,
     name: Record<string, string>,
@@ -27,12 +30,14 @@ export const restaurantUtils = {
         const  {data} = await customAxios.get(`restaurant/generate/qrcode?link=${link}`)
         return data
     },
-    postRestaurant: async ({image, languages, name,userId, description}:postRestaurant) => {
+    postRestaurant: async ({image, languages, name,userId, description, coverImage, serviceCharge}:postRestaurant) => {
         const formData = new FormData();
         formData.append("image", image);
         formData.append("name", JSON.stringify(name));
         formData.append("userId", userId);
         formData.append("description", description);
+        formData.append("coverImage", coverImage);
+        formData.append("serviceCharge", serviceCharge);
         formData.append("languages", JSON.stringify(languages));
         const  {data} = await customAxios.post('restaurant/', formData)
         return data

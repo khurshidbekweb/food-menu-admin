@@ -8,6 +8,7 @@ interface FileUploadProps {
 
 const FileUpload = ({ file, handleFileChange }: FileUploadProps) => {
     const {t} = useTranslation()
+    
     return (
         <div className="flex items-start gap-4 gap-x-8 my-2">            
             <label className="relative">

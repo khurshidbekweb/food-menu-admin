@@ -25,9 +25,11 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
+import FileUploadCOver from "@/components/file-upload-cover";
 
 const AddRestaurant = () => {
     const [file, setFile] = useState<File | null>(null);
+    const [coverImage, setCoverImage] = useState<File | null>(null);
     const [open, setOpen] = useState(false)
     const [languages, setLanguages] = useState<string[]>([]);
     const [restaurantName, setRestaurantName] = useState<Record<string, string>>({});
@@ -35,8 +37,6 @@ const AddRestaurant = () => {
     const language = uselanguageAll()?.data;
     const {t} = useTranslation()
     const users = useUserAll()?.data?.filter((el: Restaurant) => el.restaurant == null);
-
-    
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length > 0) {
@@ -68,7 +68,9 @@ const AddRestaurant = () => {
             name: restaurantName,
             userId: (form.elements.namedItem("userId") as HTMLInputElement).value,
             description: '',
-            languages
+            languages,
+            serviceCharge:(form.elements.namedItem("serviceCharge") as HTMLInputElement).value,
+            coverImage: coverImage!
         };
 
         addRestaurant.mutate(restaurantData);        
@@ -109,20 +111,27 @@ const AddRestaurant = () => {
                                     onChange={(e) => handleNameChange(e, el.code)}
                                 />
                             ))}
-
-                            <Select name="userId">
-                                <SelectTrigger className="w-full">
-                                    <SelectValue placeholder="User Id" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {users?.length && users.map((el: Restaurant) => (
-                                        <SelectItem key={el.user._id} value={el.user._id}>{el.user.username}</SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
+                            <div className="flex justify-between items-center gap-2">
+                                <Select name="userId">
+                                    <SelectTrigger className="w-full">
+                                        <SelectValue placeholder="User Id" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {users?.length && users.filter((user:Restaurant)=>user.user.role=="ADMIN").map((el: Restaurant) => (
+                                            <SelectItem key={el.user._id} value={el.user._id}>{el.user.username}</SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                                <Input
+                                    type="tel"
+                                    defaultValue={0}
+                                    name="serviceCharge"
+                                    placeholder={t('service_charge')}
+                                />                                    
+                            </div>                            
                         </DialogDescription>
 
-                        <div className="grid grid-cols-3 gap-2">
+                        <div className="grid grid-cols-3 gap-2 mt-2">
                             {language?.length && language.map((el: Language) => (
                                 <label key={el._id} className="text-sm font-medium leading-none flex gap-2">
                                     <Checkbox
@@ -134,7 +143,8 @@ const AddRestaurant = () => {
                             ))}
                         </div>
 
-                        <FileUpload file={file} handleFileChange={handleFileChange} />
+                        <FileUpload file={file} handleFileChange={handleFileChange}/>
+                        <FileUploadCOver file={coverImage} setFile={setCoverImage}/>
                         <Button className="w-full mt-2" type="submit">{t("add_modal_botton")}</Button>
                     </form>
                 </DialogHeader>
