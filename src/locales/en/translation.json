@@ -51,5 +51,9 @@
   "user_log_out": "Log Out",
   "user_profile": "Profile",
   "qr_code_download": "Download QR Code",
-  "createAt":"Created time"
+  "createAt":"Created time",
+  "service_charge": "Service charge (%)",
+"cover_image": "Cover image for banner",
+"user_select": "Restaurant owner"
+
 }

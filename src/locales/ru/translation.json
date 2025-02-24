@@ -51,5 +51,9 @@
   "user_log_out": "Выход",
   "user_profile": "Профиль",
   "qr_code_download": "Скачать QR код",
-  "createAt":"Время создания"
+  "createAt":"Время создания",
+  "service_charge": "Сервисный сбор (%)",
+"cover_image": "Изображение для баннера",
+"user_select": "Владелец ресторана"
+
 }
