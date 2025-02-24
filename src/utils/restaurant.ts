@@ -6,7 +6,7 @@ interface postRestaurant{
     userId: string,
     languages: string[],
     description: string,
-    serviceCharge: string,
+    serviceCharge?: string,
     coverImage: File 
 }
 
@@ -32,12 +32,14 @@ export const restaurantUtils = {
     },
     postRestaurant: async ({image, languages, name,userId, description, coverImage, serviceCharge}:postRestaurant) => {
         const formData = new FormData();
+        if(Number(serviceCharge)){
+            formData.append("serviceCharge", serviceCharge!);
+        }
         formData.append("image", image);
         formData.append("name", JSON.stringify(name));
         formData.append("userId", userId);
         formData.append("description", description);
         formData.append("coverImage", coverImage);
-        formData.append("serviceCharge", serviceCharge);
         formData.append("languages", JSON.stringify(languages));
         const  {data} = await customAxios.post('restaurant/', formData)
         return data

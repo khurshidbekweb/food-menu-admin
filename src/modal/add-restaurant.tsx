@@ -49,6 +49,10 @@ const AddRestaurant = () => {
             queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.restuarant_all] });
             toast.success('Restoran muvaffaqiyatli qo`shildi');
             setOpen(false)
+            setRestaurantName({})
+            setFile(null)
+            setCoverImage(null)
+            setLanguages([])
         },
         onError: (err) => {
             toast.error('Xatolik mavjud');
@@ -68,7 +72,7 @@ const AddRestaurant = () => {
             userId: (form.elements.namedItem("userId") as HTMLInputElement).value,
             description: '',
             languages,
-            serviceCharge:(form.elements.namedItem("serviceCharge") as HTMLInputElement).value,
+            serviceCharge: (form.elements.namedItem("serviceCharge") as HTMLInputElement).value,
             coverImage: coverImage!
         };
 
