@@ -115,7 +115,7 @@ const handleLanguageChange = (languageId: string, checked: boolean) => {
                                     onChange={(e) => handleNameChange(e, el.code)}
                                 />
                             ))}
-                            <div className="flex justify-between items-center gap-2">
+                            <div className="flex justify-between items-center gap-2 text-start">
                                 <label className="w-full">
                                     <span className="text-black">{t('user_select')}</span>
                                     <Select name="userId">
