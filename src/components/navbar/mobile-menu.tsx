@@ -79,7 +79,7 @@ const navLinkAdmin:navLinkType[] = [
             <SheetContent side={'left'}>
                 <SheetHeader>
                     <SheetTitle className="flex items-center gap-x-5">
-                        <img width={50} src={logo} className="rounded-full" alt="logo" />
+                        <img width={60} src={logo} className="rounded-full border shadow-2xl" alt="logo" />
                         <p className="text-[18px] font-semibold">Sharq menu</p>
                     </SheetTitle>
                     <SheetDescription className="text-start text-xl">
