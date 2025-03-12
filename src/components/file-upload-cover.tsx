@@ -18,7 +18,6 @@ const FileUploadCOver = ({ file, setFile }: FileUploadProps) => {
             setOriginalImage(URL.createObjectURL(selectedFile)); 
         }
     }
-    console.log(file);
     
 
     return (
