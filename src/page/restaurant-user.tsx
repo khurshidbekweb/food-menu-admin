@@ -15,7 +15,7 @@ import { useStore } from "@/store";
 import { Language, Restaurant } from "@/types";
 import { restaurantUtils } from "@/utils/restaurant";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Pen, RefreshCcw } from "lucide-react";
+import { RefreshCcw } from "lucide-react";
 import toast from "react-hot-toast";
 
 import { useTranslation } from "react-i18next";
