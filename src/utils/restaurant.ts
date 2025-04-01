@@ -11,9 +11,11 @@ interface postRestaurant{
 }
 
 interface editRestaurant{
-    name: Record<string, string>,
     id:string
-    languages: string[]
+    name: Record<string, string>,
+    serviceCharge: number,
+    description: string
+    languages: string[],
 }
 interface editCoverImage{
     id:string
@@ -69,7 +71,7 @@ export const restaurantUtils = {
     editRestaurantImage: async({id, image}:editRestaurantImage) => {
         const formData = new FormData();
         if(image){
-            formData.append('coverImage', image)
+            formData.append('image', image)
         }
         const  {data} = await customAxios.patch(`restaurant/${id}/image`, formData)
         return data

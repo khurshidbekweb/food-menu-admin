@@ -35,7 +35,7 @@ const EditCoverImage = ({id}:{id:string}) => {
     return (
         <div className="relative border">
             {/* Fayl yuklash tugmasi */}
-            <label className="absolute bottom-12 md:bottom-16 right-2">
+            <label className="absolute bottom-12 md:bottom-16 right-2 xl:bottom-20">
                 <p className="p-1 rounded-md font-semibold mt-2 cursor-pointer shadow-md bg-white flex gap-3 z-40">
                     <Pen />
                 </p>
