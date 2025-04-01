@@ -72,8 +72,9 @@ const useRestuarantOne = (id:string) => (
 )
 const useRestuarantLink = (link:string) => (
     useQuery({
-        queryKey: [QUERY_KEYS.restuarant_one],
-        queryFn: () => restaurantUtils.getRestaurantQrCode(link)
+        queryKey: [QUERY_KEYS.qr_code],
+        queryFn: () => restaurantUtils.getRestaurantQrCode(link),
+        enabled: !!link
     })
 )
 // ============== Food

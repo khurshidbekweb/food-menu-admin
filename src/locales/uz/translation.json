@@ -54,5 +54,6 @@
   "createAt":"Yaratilgan vaqt",
   "service_charge":"Xizmat haqi(%)",
   "cover_image":"Banner uchun rasm",
-  "user_select":"Restaurant egasi"
+  "user_select":"Restaurant egasi",
+  "Languages": "Tillar"
 }

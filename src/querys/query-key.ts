@@ -9,5 +9,6 @@ export const QUERY_KEYS = {
     restuarant_one: 'resatuarnt-one',
     user: 'user',
     user_id: 'user-id',
-    user_me: 'user-me'
+    user_me: 'user-me',
+    qr_code: 'qr_code'
 };

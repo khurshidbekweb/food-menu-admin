@@ -36,6 +36,7 @@ export interface Restaurant {
   createdAt: string;
   updatedAt: string;
   __v: number;
+  coverImage: string
   // categories: any[];
 }
 export interface CategoryIMG {
