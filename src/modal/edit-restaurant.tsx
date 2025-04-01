@@ -52,7 +52,13 @@ const EditRestaurant = () => {
     const handleAddRestaurant = (e: React.FormEvent) => {
         e.preventDefault();
         const form = e.target as HTMLFormElement;
-        
+        editRestaurant.mutate({
+            description: '',
+            id: '',
+            languages: ['aa'],
+            name: restaurantName,
+            serviceCharge: 10
+        })
         const restaurantData = {
             id:'sss',
             name: restaurantName,
@@ -60,6 +66,8 @@ const EditRestaurant = () => {
             languages,
             serviceCharge: (form.elements.namedItem("serviceCharge") as HTMLInputElement).value,
         };  
+        console.log(restaurantData);
+        
     };
 
 
